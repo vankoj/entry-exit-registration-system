@@ -32,10 +32,12 @@ namespace Entry_Exit_Registration_System
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.top_lable = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.input_label = new System.Windows.Forms.Label();
-            this.textBox_checking = new System.Windows.Forms.TextBox();
+            this.textBox_checking = new RoundTextBoxExample.CeLearningTextbox();
             this.check_button = new GroceryShop.CustomBtn.RoundButton();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // top_lable
@@ -52,18 +54,30 @@ namespace Entry_Exit_Registration_System
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.SeaGreen;
+            this.panel1.Controls.Add(this.textBox_checking);
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.check_button);
             this.panel1.Controls.Add(this.input_label);
-            this.panel1.Controls.Add(this.textBox_checking);
+            this.panel1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel1.Location = new System.Drawing.Point(-4, 71);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(519, 218);
             this.panel1.TabIndex = 4;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.ImageLocation = "";
+            this.pictureBox1.Location = new System.Drawing.Point(41, 99);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
             // input_label
             // 
             this.input_label.AutoSize = true;
-            this.input_label.Location = new System.Drawing.Point(97, 48);
+            this.input_label.Location = new System.Drawing.Point(114, 56);
             this.input_label.Name = "input_label";
             this.input_label.Size = new System.Drawing.Size(77, 17);
             this.input_label.TabIndex = 2;
@@ -71,13 +85,19 @@ namespace Entry_Exit_Registration_System
             // 
             // textBox_checking
             // 
-            this.textBox_checking.BackColor = System.Drawing.Color.Cornsilk;
-            this.textBox_checking.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox_checking.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_checking.Location = new System.Drawing.Point(100, 110);
+            this.textBox_checking.BackColor = System.Drawing.Color.Transparent;
+            this.textBox_checking.BorderColor = System.Drawing.Color.Gray;
+            this.textBox_checking.BorderSize = 1;
+            this.textBox_checking.Br = System.Drawing.Color.Cornsilk;
+            this.textBox_checking.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.textBox_checking.ForeColor = System.Drawing.Color.Black;
+            this.textBox_checking.Location = new System.Drawing.Point(117, 112);
             this.textBox_checking.Name = "textBox_checking";
-            this.textBox_checking.Size = new System.Drawing.Size(212, 27);
-            this.textBox_checking.TabIndex = 1;
+            this.textBox_checking.PasswordChar = '●';
+            this.textBox_checking.Size = new System.Drawing.Size(223, 37);
+            this.textBox_checking.TabIndex = 5;
+            this.textBox_checking.textboxRadius = 15;
+            this.textBox_checking.UseSystemPasswordChar = true;
             this.textBox_checking.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_checking_KeyPress);
             // 
             // check_button
@@ -89,7 +109,7 @@ namespace Entry_Exit_Registration_System
             this.check_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.check_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.check_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.check_button.Location = new System.Drawing.Point(351, 104);
+            this.check_button.Location = new System.Drawing.Point(357, 112);
             this.check_button.Name = "check_button";
             this.check_button.OnHoverBorderColor = System.Drawing.Color.Gray;
             this.check_button.OnHoverButtonColor = System.Drawing.Color.SeaGreen;
@@ -99,6 +119,7 @@ namespace Entry_Exit_Registration_System
             this.check_button.Text = "check_button";
             this.check_button.TextColor = System.Drawing.Color.Black;
             this.check_button.UseVisualStyleBackColor = true;
+            this.check_button.Click += new System.EventHandler(this.check_button_Click);
             // 
             // Form1
             // 
@@ -115,6 +136,7 @@ namespace Entry_Exit_Registration_System
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -122,9 +144,10 @@ namespace Entry_Exit_Registration_System
         #endregion
         private System.Windows.Forms.Label top_lable;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox_checking;
         private System.Windows.Forms.Label input_label;
         private GroceryShop.CustomBtn.RoundButton check_button;
+        private RoundTextBoxExample.CeLearningTextbox textBox_checking;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

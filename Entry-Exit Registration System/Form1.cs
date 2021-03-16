@@ -23,9 +23,10 @@ namespace Entry_Exit_Registration_System
             top_lable.Text = "Чекиране на служители";
             top_lable.Font = new Font("Mistral", 30, FontStyle.Regular);
             input_label.Text = "Потребителски номер";
-            input_label.Font = new Font("Palatino Linotype", 12, FontStyle.Regular);
+            input_label.Font = new Font("Sylfaen", 12, FontStyle.Regular);
             check_button.Text = "Чекиране";
-            this.ActiveControl = textBox_checking;
+            pictureBox1.ImageLocation = "..\\..\\..\\images\\user.bmp"; // Не трябва да е така
+            this.ActiveControl = textBox_checking; // Не работи
         }
 
         private void check_button_Click(object sender, EventArgs e)
