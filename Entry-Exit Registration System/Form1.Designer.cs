@@ -32,10 +32,10 @@ namespace Entry_Exit_Registration_System
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.top_lable = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.input_label = new System.Windows.Forms.Label();
             this.textBox_checking = new RoundTextBoxExample.CeLearningTextbox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.check_button = new GroceryShop.CustomBtn.RoundButton();
+            this.input_label = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -64,25 +64,6 @@ namespace Entry_Exit_Registration_System
             this.panel1.Size = new System.Drawing.Size(519, 218);
             this.panel1.TabIndex = 4;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.ImageLocation = "";
-            this.pictureBox1.Location = new System.Drawing.Point(41, 99);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            // 
-            // input_label
-            // 
-            this.input_label.AutoSize = true;
-            this.input_label.Location = new System.Drawing.Point(114, 56);
-            this.input_label.Name = "input_label";
-            this.input_label.Size = new System.Drawing.Size(77, 17);
-            this.input_label.TabIndex = 2;
-            this.input_label.Text = "input_label";
-            // 
             // textBox_checking
             // 
             this.textBox_checking.BackColor = System.Drawing.Color.Transparent;
@@ -99,6 +80,17 @@ namespace Entry_Exit_Registration_System
             this.textBox_checking.textboxRadius = 15;
             this.textBox_checking.UseSystemPasswordChar = true;
             this.textBox_checking.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_checking_KeyPress);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Entry_Exit_Registration_System.Properties.Resources.user;
+            this.pictureBox1.ImageLocation = "";
+            this.pictureBox1.Location = new System.Drawing.Point(41, 99);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(50, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
             // 
             // check_button
             // 
@@ -120,6 +112,15 @@ namespace Entry_Exit_Registration_System
             this.check_button.TextColor = System.Drawing.Color.Black;
             this.check_button.UseVisualStyleBackColor = true;
             this.check_button.Click += new System.EventHandler(this.check_button_Click);
+            // 
+            // input_label
+            // 
+            this.input_label.AutoSize = true;
+            this.input_label.Location = new System.Drawing.Point(114, 56);
+            this.input_label.Name = "input_label";
+            this.input_label.Size = new System.Drawing.Size(77, 17);
+            this.input_label.TabIndex = 2;
+            this.input_label.Text = "input_label";
             // 
             // Form1
             // 

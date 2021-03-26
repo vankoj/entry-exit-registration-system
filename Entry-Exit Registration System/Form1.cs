@@ -25,8 +25,11 @@ namespace Entry_Exit_Registration_System
             input_label.Text = "Потребителски номер";
             input_label.Font = new Font("Sylfaen", 12, FontStyle.Regular);
             check_button.Text = "Чекиране";
-            pictureBox1.ImageLocation = "..\\..\\..\\images\\user.bmp"; // Не трябва да е така
             this.ActiveControl = textBox_checking; // Не работи
+
+            // Временно зареждане на Администраторската форма
+            //Form2 form2 = new Form2();
+            //form2.Visible = true;
         }
 
         private void check_button_Click(object sender, EventArgs e)

@@ -15,11 +15,12 @@ namespace Entry_Exit_Registration_System
         public Form2()
         {
             InitializeComponent();
+            this.Text = "Вход на администратор";
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
-
+            this.ActiveControl = name;
         }
     }
 }
