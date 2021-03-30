@@ -12,10 +12,14 @@ namespace Entry_Exit_Registration_System
 {
     public partial class Form1 : Form
     {
+        private DatabaseManager databaseManager;
+
         public Form1()
         {
             InitializeComponent();
             this.Text = "Чекиране на служители";
+
+            databaseManager = new DatabaseManager();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -30,6 +34,11 @@ namespace Entry_Exit_Registration_System
             // Временно зареждане на Администраторската форма
             //Form2 form2 = new Form2();
             //form2.Visible = true;
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            databaseManager.Dispose();
         }
 
         private void check_button_Click(object sender, EventArgs e)
