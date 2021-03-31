@@ -117,6 +117,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\user.png" />
+    <None Include="Resources\padlock.png" />
     <Content Include="WorkersRegistartion.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

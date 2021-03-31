@@ -20,7 +20,19 @@ namespace Entry_Exit_Registration_System
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            this.ActiveControl = name;
+            username_lable.Text = "Потребителско име:";
+            username_lable.Font = new Font("Sylfaen", 12, FontStyle.Regular);
+            passowrd_label.Text = "Парола:";
+            passowrd_label.Font = new Font("Sylfaen", 12, FontStyle.Regular);
+            login_button.Text = "Вход";
+            this.ActiveControl = textBox_username;
+        }
+        private void Form1_FormClosing(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            Form1 form1 = new Form1();
+            form1.ShowDialog();
         }
     }
 }
