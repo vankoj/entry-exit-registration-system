@@ -30,10 +30,6 @@ namespace Entry_Exit_Registration_System
             input_label.Font = new Font("Sylfaen", 12, FontStyle.Regular);
             check_button.Text = "Чекиране";
             this.ActiveControl = textBox_checking; // Не работи
-
-            // Временно зареждане на Администраторската форма
-            //Form2 form2 = new Form2();
-            //form2.Visible = true;
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -43,17 +39,30 @@ namespace Entry_Exit_Registration_System
 
         private void check_button_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(textBox_checking.Text))
+            if (textBox_checking.Text == "666")
+            {
+                // Временно зареждане на Администраторската форма
+                this.Hide();
+
+                Form2 form2 = new Form2();
+                form2.ShowDialog();
+
+                this.Show();
+
+                textBox_checking.Text = "";
+                this.ActiveControl = textBox_checking; // Не работи
+            }
+            else if (!string.IsNullOrEmpty(textBox_checking.Text))
             {
                 MessageBox.Show(textBox_checking.Text, "Чекиране", MessageBoxButtons.OK, MessageBoxIcon.Question);
 
                 textBox_checking.Text = "";
-                this.ActiveControl = textBox_checking;
+                this.ActiveControl = textBox_checking; // Не работи
             }
             else
             {
                 MessageBox.Show("Моля въведете потребителски номер", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.ActiveControl = textBox_checking;
+                this.ActiveControl = textBox_checking; // Не работи
             }
         }
 
@@ -62,6 +71,7 @@ namespace Entry_Exit_Registration_System
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back || textBox_checking.Text.Length >= 10)
             {
                 e.Handled = true;
+                textBox_checking.Focus(); // Не работи
             }
             else if (e.KeyChar == (char)Keys.Return) check_button_Click(sender, e);
         }

@@ -76,7 +76,7 @@ namespace Entry_Exit_Registration_System
             this.textBox_checking.Name = "textBox_checking";
             this.textBox_checking.PasswordChar = '●';
             this.textBox_checking.Size = new System.Drawing.Size(223, 37);
-            this.textBox_checking.TabIndex = 5;
+            this.textBox_checking.TabIndex = 0;
             this.textBox_checking.textboxRadius = 15;
             this.textBox_checking.UseSystemPasswordChar = true;
             this.textBox_checking.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_checking_KeyPress);
@@ -107,7 +107,7 @@ namespace Entry_Exit_Registration_System
             this.check_button.OnHoverButtonColor = System.Drawing.Color.SeaGreen;
             this.check_button.OnHoverTextColor = System.Drawing.Color.Black;
             this.check_button.Size = new System.Drawing.Size(124, 37);
-            this.check_button.TabIndex = 3;
+            this.check_button.TabIndex = 1;
             this.check_button.Text = "check_button";
             this.check_button.TextColor = System.Drawing.Color.Black;
             this.check_button.UseVisualStyleBackColor = true;
