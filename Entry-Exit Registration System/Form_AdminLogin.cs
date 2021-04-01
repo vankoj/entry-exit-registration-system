@@ -27,5 +27,15 @@ namespace Entry_Exit_Registration_System
             login_button.Text = "Вход";
             this.ActiveControl = textBox_username;
         }
+
+        private void login_button_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            Form_AdminPanel form3 = new Form_AdminPanel();
+            form3.ShowDialog();
+
+            this.Show();
+        }
     }
 }

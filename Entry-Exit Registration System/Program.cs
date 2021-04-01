@@ -16,7 +16,7 @@ namespace Entry_Exit_Registration_System
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form_Cheking());
+            Application.Run(new Form_AdminPanel());
         }
     }
 }

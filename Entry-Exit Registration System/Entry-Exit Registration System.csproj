@@ -67,6 +67,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DatabaseManager.cs" />
+    <Compile Include="Form_AdminPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_AdminPanel.Designer.cs">
+      <DependentUpon>Form_AdminPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Cheking.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Trans.cs" />
+    <EmbeddedResource Include="Form_AdminPanel.resx">
+      <DependentUpon>Form_AdminPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_Cheking.resx">
       <DependentUpon>Form_Cheking.cs</DependentUpon>
     </EmbeddedResource>
