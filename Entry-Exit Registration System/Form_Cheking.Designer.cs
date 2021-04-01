@@ -1,7 +1,7 @@
 ﻿
 namespace Entry_Exit_Registration_System
 {
-    partial class Form1
+    partial class Form_Cheking
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace Entry_Exit_Registration_System
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Cheking));
             this.top_lable = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox_checking = new RoundTextBoxExample.CeLearningTextbox();
@@ -122,7 +122,7 @@ namespace Entry_Exit_Registration_System
             this.input_label.TabIndex = 2;
             this.input_label.Text = "input_label";
             // 
-            // Form1
+            // Form_Cheking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -132,8 +132,8 @@ namespace Entry_Exit_Registration_System
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Form_Cheking";
+            this.Text = "Form_Cheking";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

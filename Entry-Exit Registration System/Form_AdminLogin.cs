@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Entry_Exit_Registration_System
 {
-    public partial class Form2 : Form
+    public partial class Form_AdminLogin : Form
     {
-        public Form2()
+        public Form_AdminLogin()
         {
             InitializeComponent();
             this.Text = "Вход на администратор";
@@ -26,13 +26,6 @@ namespace Entry_Exit_Registration_System
             passowrd_label.Font = new Font("Sylfaen", 12, FontStyle.Regular);
             login_button.Text = "Вход";
             this.ActiveControl = textBox_username;
-        }
-        private void Form1_FormClosing(object sender, EventArgs e)
-        {
-            this.Hide();
-
-            Form1 form1 = new Form1();
-            form1.ShowDialog();
         }
     }
 }

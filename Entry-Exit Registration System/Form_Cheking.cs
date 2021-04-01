@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace Entry_Exit_Registration_System
 {
-    public partial class Form1 : Form
+    public partial class Form_Cheking : Form
     {
         private DatabaseManager databaseManager;
 
-        public Form1()
+        public Form_Cheking()
         {
             InitializeComponent();
             this.Text = "Чекиране на служители";
@@ -44,7 +44,7 @@ namespace Entry_Exit_Registration_System
                 // Временно зареждане на Администраторската форма
                 this.Hide();
 
-                Form2 form2 = new Form2();
+                Form_AdminLogin form2 = new Form_AdminLogin();
                 form2.ShowDialog();
 
                 this.Show();

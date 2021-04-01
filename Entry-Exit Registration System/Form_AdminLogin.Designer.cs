@@ -1,7 +1,7 @@
 ﻿
 namespace Entry_Exit_Registration_System
 {
-    partial class Form2
+    partial class Form_AdminLogin
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace Entry_Exit_Registration_System
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_AdminLogin));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textBox_username = new RoundTextBoxExample.CeLearningTextbox();
             this.textBox_passowrd = new RoundTextBoxExample.CeLearningTextbox();
@@ -131,7 +131,7 @@ namespace Entry_Exit_Registration_System
             this.pictureBox2.TabIndex = 9;
             this.pictureBox2.TabStop = false;
             // 
-            // Form2
+            // Form_AdminLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -146,8 +146,8 @@ namespace Entry_Exit_Registration_System
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Form2";
-            this.Text = "Form2";
+            this.Name = "Form_AdminLogin";
+            this.Text = "Form_AdminLogin";
             this.Load += new System.EventHandler(this.Form2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
