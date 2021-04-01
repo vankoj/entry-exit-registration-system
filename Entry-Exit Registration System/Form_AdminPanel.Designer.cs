@@ -29,48 +29,50 @@ namespace Entry_Exit_Registration_System
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_AdminPanel));
             this.panel_top = new System.Windows.Forms.Panel();
-            this.release_button = new GroceryShop.CustomBtn.RoundButton();
+            this.release_employee_button = new GroceryShop.CustomBtn.RoundButton();
             this.report_button = new GroceryShop.CustomBtn.RoundButton();
             this.update_employee_button = new GroceryShop.CustomBtn.RoundButton();
             this.hire_button = new GroceryShop.CustomBtn.RoundButton();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel = new System.Windows.Forms.Panel();
             this.panel_top.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_top
             // 
             this.panel_top.BackColor = System.Drawing.Color.Cornsilk;
-            this.panel_top.Controls.Add(this.release_button);
+            this.panel_top.Controls.Add(this.release_employee_button);
             this.panel_top.Controls.Add(this.report_button);
             this.panel_top.Controls.Add(this.update_employee_button);
             this.panel_top.Controls.Add(this.hire_button);
             this.panel_top.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_top.Location = new System.Drawing.Point(0, 0);
             this.panel_top.Name = "panel_top";
-            this.panel_top.Size = new System.Drawing.Size(882, 60);
+            this.panel_top.Size = new System.Drawing.Size(880, 60);
             this.panel_top.TabIndex = 0;
             // 
-            // release_button
+            // release_employee_button
             // 
-            this.release_button.BorderColor = System.Drawing.Color.Silver;
-            this.release_button.ButtonColor = System.Drawing.Color.SeaGreen;
-            this.release_button.FlatAppearance.BorderSize = 0;
-            this.release_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.release_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.release_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.release_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.release_button.Location = new System.Drawing.Point(650, 10);
-            this.release_button.Margin = new System.Windows.Forms.Padding(10);
-            this.release_button.Name = "release_button";
-            this.release_button.OnHoverBorderColor = System.Drawing.Color.Gray;
-            this.release_button.OnHoverButtonColor = System.Drawing.Color.Black;
-            this.release_button.OnHoverTextColor = System.Drawing.Color.White;
-            this.release_button.Size = new System.Drawing.Size(220, 40);
-            this.release_button.TabIndex = 4;
-            this.release_button.Text = "release_button";
-            this.release_button.TextColor = System.Drawing.Color.White;
-            this.release_button.UseVisualStyleBackColor = true;
+            this.release_employee_button.BorderColor = System.Drawing.Color.Silver;
+            this.release_employee_button.ButtonColor = System.Drawing.Color.SeaGreen;
+            this.release_employee_button.FlatAppearance.BorderSize = 0;
+            this.release_employee_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.release_employee_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.release_employee_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.release_employee_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.release_employee_button.Location = new System.Drawing.Point(650, 10);
+            this.release_employee_button.Margin = new System.Windows.Forms.Padding(10);
+            this.release_employee_button.Name = "release_employee_button";
+            this.release_employee_button.OnHoverBorderColor = System.Drawing.Color.Gray;
+            this.release_employee_button.OnHoverButtonColor = System.Drawing.Color.Black;
+            this.release_employee_button.OnHoverTextColor = System.Drawing.Color.White;
+            this.release_employee_button.Size = new System.Drawing.Size(220, 40);
+            this.release_employee_button.TabIndex = 4;
+            this.release_employee_button.Text = "release_employee_button";
+            this.release_employee_button.TextColor = System.Drawing.Color.White;
+            this.release_employee_button.UseVisualStyleBackColor = true;
+            this.release_employee_button.Click += new System.EventHandler(this.release_employee_button_Click);
             // 
             // report_button
             // 
@@ -92,6 +94,7 @@ namespace Entry_Exit_Registration_System
             this.report_button.Text = "report_button";
             this.report_button.TextColor = System.Drawing.Color.White;
             this.report_button.UseVisualStyleBackColor = true;
+            this.report_button.Click += new System.EventHandler(this.report_button_Click);
             // 
             // update_employee_button
             // 
@@ -113,6 +116,7 @@ namespace Entry_Exit_Registration_System
             this.update_employee_button.Text = "update_employee_button";
             this.update_employee_button.TextColor = System.Drawing.Color.White;
             this.update_employee_button.UseVisualStyleBackColor = true;
+            this.update_employee_button.Click += new System.EventHandler(this.update_employee_button_Click);
             // 
             // hire_button
             // 
@@ -134,24 +138,26 @@ namespace Entry_Exit_Registration_System
             this.hire_button.Text = "hire_button";
             this.hire_button.TextColor = System.Drawing.Color.White;
             this.hire_button.UseVisualStyleBackColor = true;
+            this.hire_button.Click += new System.EventHandler(this.hire_button_Click);
             // 
-            // panel1
+            // panel
             // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 60);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(882, 390);
-            this.panel1.TabIndex = 5;
+            this.panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel.Location = new System.Drawing.Point(0, 60);
+            this.panel.Name = "panel";
+            this.panel.Size = new System.Drawing.Size(880, 390);
+            this.panel.TabIndex = 5;
             // 
             // Form_AdminPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SeaGreen;
-            this.ClientSize = new System.Drawing.Size(882, 450);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(880, 450);
+            this.Controls.Add(this.panel);
             this.Controls.Add(this.panel_top);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_AdminPanel";
             this.Text = "Form_AdminPanel";
             this.Load += new System.EventHandler(this.Form_AdminWorkSpace_Load);
@@ -164,9 +170,9 @@ namespace Entry_Exit_Registration_System
 
         private System.Windows.Forms.Panel panel_top;
         private GroceryShop.CustomBtn.RoundButton report_button;
-        private GroceryShop.CustomBtn.RoundButton release_button;
+        private GroceryShop.CustomBtn.RoundButton release_employee_button;
         private GroceryShop.CustomBtn.RoundButton update_employee_button;
         private GroceryShop.CustomBtn.RoundButton hire_button;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel;
     }
 }
