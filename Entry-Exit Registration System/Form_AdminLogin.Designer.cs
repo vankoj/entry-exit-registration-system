@@ -63,7 +63,7 @@ namespace Entry_Exit_Registration_System
             this.textBox_username.Name = "textBox_username";
             this.textBox_username.PasswordChar = '\0';
             this.textBox_username.Size = new System.Drawing.Size(287, 33);
-            this.textBox_username.TabIndex = 0;
+            this.textBox_username.TabIndex = 1;
             this.textBox_username.textboxRadius = 15;
             this.textBox_username.UseSystemPasswordChar = false;
             // 
@@ -79,7 +79,7 @@ namespace Entry_Exit_Registration_System
             this.textBox_passowrd.Name = "textBox_passowrd";
             this.textBox_passowrd.PasswordChar = '●';
             this.textBox_passowrd.Size = new System.Drawing.Size(287, 33);
-            this.textBox_passowrd.TabIndex = 1;
+            this.textBox_passowrd.TabIndex = 2;
             this.textBox_passowrd.textboxRadius = 15;
             this.textBox_passowrd.UseSystemPasswordChar = true;
             // 
@@ -98,10 +98,11 @@ namespace Entry_Exit_Registration_System
             this.login_button.OnHoverButtonColor = System.Drawing.Color.SeaGreen;
             this.login_button.OnHoverTextColor = System.Drawing.Color.Black;
             this.login_button.Size = new System.Drawing.Size(85, 33);
-            this.login_button.TabIndex = 2;
+            this.login_button.TabIndex = 3;
             this.login_button.Text = "login";
             this.login_button.TextColor = System.Drawing.Color.Black;
             this.login_button.UseVisualStyleBackColor = true;
+            this.login_button.Click += new System.EventHandler(this.login_button_Click);
             // 
             // username_lable
             // 
