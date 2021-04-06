@@ -31,11 +31,11 @@ namespace Entry_Exit_Registration_System
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_AdminPanel));
             this.panel_top = new System.Windows.Forms.Panel();
+            this.panel = new System.Windows.Forms.Panel();
             this.release_employee_button = new GroceryShop.CustomBtn.RoundButton();
             this.report_button = new GroceryShop.CustomBtn.RoundButton();
             this.update_employee_button = new GroceryShop.CustomBtn.RoundButton();
             this.hire_button = new GroceryShop.CustomBtn.RoundButton();
-            this.panel = new System.Windows.Forms.Panel();
             this.panel_top.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,6 +51,14 @@ namespace Entry_Exit_Registration_System
             this.panel_top.Name = "panel_top";
             this.panel_top.Size = new System.Drawing.Size(880, 60);
             this.panel_top.TabIndex = 0;
+            // 
+            // panel
+            // 
+            this.panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel.Location = new System.Drawing.Point(0, 60);
+            this.panel.Name = "panel";
+            this.panel.Size = new System.Drawing.Size(880, 390);
+            this.panel.TabIndex = 5;
             // 
             // release_employee_button
             // 
@@ -139,14 +147,6 @@ namespace Entry_Exit_Registration_System
             this.hire_button.TextColor = System.Drawing.Color.White;
             this.hire_button.UseVisualStyleBackColor = true;
             this.hire_button.Click += new System.EventHandler(this.hire_button_Click);
-            // 
-            // panel
-            // 
-            this.panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel.Location = new System.Drawing.Point(0, 60);
-            this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(880, 390);
-            this.panel.TabIndex = 5;
             // 
             // Form_AdminPanel
             // 

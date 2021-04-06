@@ -18,6 +18,7 @@ namespace Entry_Exit_Registration_System
         {
             InitializeComponent();
             this.Text = "Чекиране на служители";
+            this.MaximizeBox = false;
 
             databaseManager = new DatabaseManager();
         }

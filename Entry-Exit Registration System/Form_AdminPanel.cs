@@ -16,6 +16,7 @@ namespace Entry_Exit_Registration_System
         {
             InitializeComponent();
             this.Text = "Администраторско работно поле";
+            this.MaximizeBox = false;
         }
 
         private void Form_AdminWorkSpace_Load(object sender, EventArgs e)

@@ -16,6 +16,7 @@ namespace Entry_Exit_Registration_System
         {
             InitializeComponent();
             this.Text = "Вход на администратор";
+            this.MaximizeBox = false;
         }
 
         private void Form2_Load(object sender, EventArgs e)
