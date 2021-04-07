@@ -31,12 +31,23 @@ namespace Entry_Exit_Registration_System
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_AdminPanel));
             this.panel_top = new System.Windows.Forms.Panel();
-            this.panel = new System.Windows.Forms.Panel();
             this.release_employee_button = new GroceryShop.CustomBtn.RoundButton();
             this.report_button = new GroceryShop.CustomBtn.RoundButton();
             this.update_employee_button = new GroceryShop.CustomBtn.RoundButton();
             this.hire_button = new GroceryShop.CustomBtn.RoundButton();
+            this.panel = new System.Windows.Forms.Panel();
+            this.userControl_Hire1 = new Entry_Exit_Registration_System.UserControl_Hire();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.minimizeButton = new System.Windows.Forms.PictureBox();
+            this.logo = new System.Windows.Forms.PictureBox();
+            this.windowName = new System.Windows.Forms.Label();
+            this.closeButton = new System.Windows.Forms.PictureBox();
             this.panel_top.SuspendLayout();
+            this.panel.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.minimizeButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.closeButton)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_top
@@ -49,16 +60,8 @@ namespace Entry_Exit_Registration_System
             this.panel_top.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_top.Location = new System.Drawing.Point(0, 0);
             this.panel_top.Name = "panel_top";
-            this.panel_top.Size = new System.Drawing.Size(880, 60);
+            this.panel_top.Size = new System.Drawing.Size(900, 60);
             this.panel_top.TabIndex = 0;
-            // 
-            // panel
-            // 
-            this.panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel.Location = new System.Drawing.Point(0, 60);
-            this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(880, 390);
-            this.panel.TabIndex = 5;
             // 
             // release_employee_button
             // 
@@ -148,20 +151,107 @@ namespace Entry_Exit_Registration_System
             this.hire_button.UseVisualStyleBackColor = true;
             this.hire_button.Click += new System.EventHandler(this.hire_button_Click);
             // 
+            // panel
+            // 
+            this.panel.BackColor = System.Drawing.Color.SeaGreen;
+            this.panel.Controls.Add(this.userControl_Hire1);
+            this.panel.Controls.Add(this.panel_top);
+            this.panel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel.Location = new System.Drawing.Point(0, 45);
+            this.panel.Name = "panel";
+            this.panel.Size = new System.Drawing.Size(900, 455);
+            this.panel.TabIndex = 5;
+            // 
+            // userControl_Hire1
+            // 
+            this.userControl_Hire1.Location = new System.Drawing.Point(828, 240);
+            this.userControl_Hire1.Name = "userControl_Hire1";
+            this.userControl_Hire1.Size = new System.Drawing.Size(8, 8);
+            this.userControl_Hire1.TabIndex = 1;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Cornsilk;
+            this.panel1.Controls.Add(this.minimizeButton);
+            this.panel1.Controls.Add(this.logo);
+            this.panel1.Controls.Add(this.windowName);
+            this.panel1.Controls.Add(this.closeButton);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(900, 40);
+            this.panel1.TabIndex = 6;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            // 
+            // minimizeButton
+            // 
+            this.minimizeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.minimizeButton.BackColor = System.Drawing.Color.Transparent;
+            this.minimizeButton.Image = global::Entry_Exit_Registration_System.Properties.Resources.minimize;
+            this.minimizeButton.Location = new System.Drawing.Point(827, 4);
+            this.minimizeButton.Name = "minimizeButton";
+            this.minimizeButton.Size = new System.Drawing.Size(32, 32);
+            this.minimizeButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.minimizeButton.TabIndex = 5;
+            this.minimizeButton.TabStop = false;
+            this.minimizeButton.Click += new System.EventHandler(this.minimizeButton_Click);
+            // 
+            // logo
+            // 
+            this.logo.BackColor = System.Drawing.Color.Transparent;
+            this.logo.Image = global::Entry_Exit_Registration_System.Properties.Resources.id_card;
+            this.logo.Location = new System.Drawing.Point(3, 4);
+            this.logo.Name = "logo";
+            this.logo.Size = new System.Drawing.Size(32, 32);
+            this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.logo.TabIndex = 4;
+            this.logo.TabStop = false;
+            this.logo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            // 
+            // windowName
+            // 
+            this.windowName.AutoSize = true;
+            this.windowName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.windowName.Location = new System.Drawing.Point(41, 7);
+            this.windowName.Name = "windowName";
+            this.windowName.Size = new System.Drawing.Size(161, 29);
+            this.windowName.TabIndex = 3;
+            this.windowName.Text = "windowName";
+            this.windowName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            // 
+            // closeButton
+            // 
+            this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.closeButton.BackColor = System.Drawing.Color.Transparent;
+            this.closeButton.Image = global::Entry_Exit_Registration_System.Properties.Resources.close;
+            this.closeButton.Location = new System.Drawing.Point(865, 4);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(32, 32);
+            this.closeButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.closeButton.TabIndex = 2;
+            this.closeButton.TabStop = false;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            // 
             // Form_AdminPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.SeaGreen;
-            this.ClientSize = new System.Drawing.Size(880, 450);
+            this.BackColor = System.Drawing.Color.Black;
+            this.ClientSize = new System.Drawing.Size(900, 500);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel);
-            this.Controls.Add(this.panel_top);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_AdminPanel";
             this.Text = "Form_AdminPanel";
             this.Load += new System.EventHandler(this.Form_AdminWorkSpace_Load);
             this.panel_top.ResumeLayout(false);
+            this.panel.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.minimizeButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.closeButton)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -174,5 +264,11 @@ namespace Entry_Exit_Registration_System
         private GroceryShop.CustomBtn.RoundButton update_employee_button;
         private GroceryShop.CustomBtn.RoundButton hire_button;
         private System.Windows.Forms.Panel panel;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox minimizeButton;
+        private System.Windows.Forms.PictureBox logo;
+        private System.Windows.Forms.Label windowName;
+        private System.Windows.Forms.PictureBox closeButton;
+        private UserControl_Hire userControl_Hire1;
     }
 }

@@ -63,10 +63,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CeLearningTextbox.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="DatabaseManager.cs" />
+    <Compile Include="Form_EasterEgg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_EasterEgg.Designer.cs">
+      <DependentUpon>Form_EasterEgg.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_AdminPanel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,37 +88,38 @@
     <Compile Include="Form_AdminLogin.Designer.cs">
       <DependentUpon>Form_AdminLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Hire.cs">
+    <Compile Include="UserControl_Hire.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Hire.Designer.cs">
-      <DependentUpon>Hire.cs</DependentUpon>
+    <Compile Include="UserControl_Hire.Designer.cs">
+      <DependentUpon>UserControl_Hire.cs</DependentUpon>
     </Compile>
-    <Compile Include="MyRectangle.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReleaseEmployee.cs">
+    <Compile Include="UserControl_ReleaseEmployee.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ReleaseEmployee.Designer.cs">
-      <DependentUpon>ReleaseEmployee.cs</DependentUpon>
+    <Compile Include="UserControl_ReleaseEmployee.Designer.cs">
+      <DependentUpon>UserControl_ReleaseEmployee.cs</DependentUpon>
     </Compile>
     <Compile Include="RoundButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Trans.cs" />
-    <Compile Include="Report.cs">
+    <Compile Include="UserControl_Report.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Report.Designer.cs">
-      <DependentUpon>Report.cs</DependentUpon>
+    <Compile Include="UserControl_Report.Designer.cs">
+      <DependentUpon>UserControl_Report.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdateEmployee.cs">
+    <Compile Include="UserControl_UpdateEmployee.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UpdateEmployee.Designer.cs">
-      <DependentUpon>UpdateEmployee.cs</DependentUpon>
+    <Compile Include="UserControl_UpdateEmployee.Designer.cs">
+      <DependentUpon>UserControl_UpdateEmployee.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Form_EasterEgg.resx">
+      <DependentUpon>Form_EasterEgg.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_AdminPanel.resx">
       <DependentUpon>Form_AdminPanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,8 +129,8 @@
     <EmbeddedResource Include="Form_AdminLogin.resx">
       <DependentUpon>Form_AdminLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Hire.resx">
-      <DependentUpon>Hire.cs</DependentUpon>
+    <EmbeddedResource Include="UserControl_Hire.resx">
+      <DependentUpon>UserControl_Hire.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -138,14 +142,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ReleaseEmployee.resx">
-      <DependentUpon>ReleaseEmployee.cs</DependentUpon>
+    <EmbeddedResource Include="UserControl_ReleaseEmployee.resx">
+      <DependentUpon>UserControl_ReleaseEmployee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Report.resx">
-      <DependentUpon>Report.cs</DependentUpon>
+    <EmbeddedResource Include="UserControl_Report.resx">
+      <DependentUpon>UserControl_Report.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdateEmployee.resx">
-      <DependentUpon>UpdateEmployee.cs</DependentUpon>
+    <EmbeddedResource Include="UserControl_UpdateEmployee.resx">
+      <DependentUpon>UserControl_UpdateEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -163,6 +167,9 @@
   <ItemGroup>
     <None Include="Resources\user.png" />
     <None Include="Resources\padlock.png" />
+    <None Include="Resources\close.png" />
+    <None Include="Resources\id-card.png" />
+    <None Include="Resources\minimize.png" />
     <Content Include="WorkersRegistartion.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
