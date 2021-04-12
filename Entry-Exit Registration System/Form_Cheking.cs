@@ -41,7 +41,7 @@ namespace Entry_Exit_Registration_System
             this.Text = "Чекиране на служители";
             this.MaximizeBox = false;
 
-            databaseManager = new DatabaseManager();
+            databaseManager = DatabaseManager.Instance;
         }
 
         private void Form_Cheking_Load(object sender, EventArgs e)

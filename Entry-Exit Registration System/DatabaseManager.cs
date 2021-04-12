@@ -10,13 +10,25 @@ using System.Windows.Forms;
 
 namespace Entry_Exit_Registration_System
 {
-    // TODO - Да се направи класът Database Singletone, за да може да има само една инстанция
-    class DatabaseManager : IDisposable
+    sealed class DatabaseManager : IDisposable
     {
+        private static DatabaseManager instance = null;
         private string connectionString;
         private SqlConnection connection;
 
-        public DatabaseManager()
+        public static DatabaseManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new DatabaseManager();
+                }
+                return instance;
+            }
+        }
+
+        private DatabaseManager()
         {
             try
             {
@@ -47,6 +59,7 @@ namespace Entry_Exit_Registration_System
         public void Dispose()
         {
             connection.Close();
+            instance = null;
         }
     }
 }
