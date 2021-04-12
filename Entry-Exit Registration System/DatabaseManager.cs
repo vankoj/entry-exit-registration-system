@@ -61,5 +61,23 @@ namespace Entry_Exit_Registration_System
             connection.Close();
             instance = null;
         }
+
+        public bool CheckIfEmployeeExists(string employeeEGN)
+        {
+            bool exists = false;
+
+            string query = "SELECT * FROM Employee\n" +
+                            "WHERE EGN LIKE '" + employeeEGN + "'";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                exists = reader.Read();
+            }
+
+            return exists;
+        }
     }
 }
