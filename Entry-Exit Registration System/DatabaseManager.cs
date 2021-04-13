@@ -36,7 +36,7 @@ namespace Entry_Exit_Registration_System
                 connection = new SqlConnection(connectionString);
                 connection.Open();
 
-                /* // TODO - Примерна заявка. Изтрий този блок след като напишеш първата заявка
+                /* // TODO - Примерна заявка. Изтрий този блок след като заявките са написани
                 string query = "SELECT * FROM Position";
                 SqlCommand cmd = new SqlCommand(query, connection);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -78,6 +78,81 @@ namespace Entry_Exit_Registration_System
             }
 
             return exists;
+        }
+
+        // потребител (назначаване)
+        public bool InsertEmployee() // TODO - параметри на метода
+        {
+            bool successful = false;
+
+            // TODO - тяло на метода
+
+            return successful;
+        }
+
+        // позиция (добавяне)
+        public bool InsertPosition() // TODO - параметри на метода
+        {
+            bool successful = false;
+
+            // TODO - тяло на метода
+
+            return successful;
+        }
+
+        // събитие (чекиране)
+        // потребител (влиза/излиза)
+        public bool CheckInEmployee() // TODO - параметри на метода
+        {
+            bool successful = false;
+
+            // TODO - тяло на метода
+
+            return successful;
+        }
+
+        // потребител (уволнен)
+        public bool RemoveEmployee() // TODO - параметри на метода
+        {
+            bool successful = false;
+
+            // TODO - тяло на метода
+
+            return successful;
+        }
+
+        // позиция (премахване)
+        public bool RemovePosition() // TODO - параметри на метода
+        {
+            bool successful = false;
+
+            // TODO - тяло на метода
+
+            return successful;
+        }
+
+        // справка за служител (за ден)
+        public void GetEmployeeCheckInsForDate() // TODO - параметри на метода; смени типа на връщаните данни (резултат от заявката)
+        {
+            // TODO - тяло на метода
+        }
+
+        // справка за служител (за месец)
+        public void GetEmployeeCheckInsForMonth() // TODO - параметри на метода; смени типа на връщаните данни (резултат от заявката)
+        {
+            // TODO - тяло на метода
+        }
+
+        // справка за служител (за период)
+        public void GetEmployeeCheckInsForPeriod() // TODO - параметри на метода; смени типа на връщаните данни (резултат от заявката)
+        {
+            // TODO - тяло на метода
+        }
+
+        // справка за всички служители (за период)
+        public void GetEmployeesForPeriod() // TODO - параметри на метода; смени типа на връщаните данни (резултат от заявката)
+        {
+            // TODO - тяло на метода
         }
     }
 }
