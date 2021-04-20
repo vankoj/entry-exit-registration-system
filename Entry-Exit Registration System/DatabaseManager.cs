@@ -70,7 +70,6 @@ namespace Entry_Exit_Registration_System
                             "WHERE EGN LIKE '" + employeeEGN + "'";
 
             SqlCommand cmd = new SqlCommand(query, connection);
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
 
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
@@ -81,7 +80,7 @@ namespace Entry_Exit_Registration_System
         }
 
         // потребител (назначаване)
-        public bool InsertEmployee() // TODO - параметри на метода
+        public bool InsertEmployee(string EGN, string firstName, string lastName, int positionId, bool inOffice)
         {
             bool successful = false;
 
@@ -91,7 +90,7 @@ namespace Entry_Exit_Registration_System
         }
 
         // позиция (добавяне)
-        public bool InsertPosition() // TODO - параметри на метода
+        public bool InsertPosition(string positionName)
         {
             bool successful = false;
 
@@ -102,7 +101,7 @@ namespace Entry_Exit_Registration_System
 
         // събитие (чекиране)
         // потребител (влиза/излиза)
-        public bool CheckInEmployee() // TODO - параметри на метода
+        public bool CheckInEmployee(string EGN)
         {
             bool successful = false;
 
@@ -112,7 +111,7 @@ namespace Entry_Exit_Registration_System
         }
 
         // потребител (уволнен)
-        public bool RemoveEmployee() // TODO - параметри на метода
+        public bool RemoveEmployee(string EGN)
         {
             bool successful = false;
 
@@ -122,7 +121,7 @@ namespace Entry_Exit_Registration_System
         }
 
         // позиция (премахване)
-        public bool RemovePosition() // TODO - параметри на метода
+        public bool RemovePosition(string positionName)
         {
             bool successful = false;
 
@@ -132,27 +131,68 @@ namespace Entry_Exit_Registration_System
         }
 
         // справка за служител (за ден)
-        public void GetEmployeeCheckInsForDate() // TODO - параметри на метода; смени типа на връщаните данни (резултат от заявката)
+        public List<CheckInEvent> GetEmployeeCheckInsForDate(string EGN, DateTime date) // TODO - смени типа на връщаните данни (резултат от заявката) (List?)
         {
+            List<CheckInEvent> result = new List<CheckInEvent>();
+            string query = "SELECT * FROM Employee";
+
+            // Добавяне на примерен запис към колекцията с резултатите
+            result.Add(new CheckInEvent("991111222222", "Петър", "Драганов", "разработчик", new DateTime(2010, 12, 1, 12, 21, 31), true));
+
             // TODO - тяло на метода
+
+            //date.Day;
+            //date.Month;
+            //date.Year;
+
+            return result;
         }
 
         // справка за служител (за месец)
-        public void GetEmployeeCheckInsForMonth() // TODO - параметри на метода; смени типа на връщаните данни (резултат от заявката)
+        public List<CheckInEvent> GetEmployeeCheckInsForMonth(string EGN, DateTime date)
         {
+            List<CheckInEvent> result = new List<CheckInEvent>();
+
             // TODO - тяло на метода
+
+            //date.Month;
+            //date.Year;
+
+            return result;
         }
 
         // справка за служител (за период)
-        public void GetEmployeeCheckInsForPeriod() // TODO - параметри на метода; смени типа на връщаните данни (резултат от заявката)
+        public List<CheckInEvent> GetEmployeeCheckInsForPeriod(string EGN, DateTime dateStart, DateTime dateEnd)
         {
+            List<CheckInEvent> result = new List<CheckInEvent>();
+
             // TODO - тяло на метода
+
+            //dateStart.Day;
+            //dateStart.Month;
+            //dateStart.Year;
+            //dateEnd.Day;
+            //dateEnd.Month;
+            //dateEnd.Year;
+
+            return result;
         }
 
         // справка за всички служители (за период)
-        public void GetEmployeesForPeriod() // TODO - параметри на метода; смени типа на връщаните данни (резултат от заявката)
+        public List<CheckInEvent> GetEmployeesForPeriod(DateTime dateStart, DateTime dateEnd)
         {
+            List<CheckInEvent> result = new List<CheckInEvent>();
+
             // TODO - тяло на метода
+
+            //dateStart.Day;
+            //dateStart.Month;
+            //dateStart.Year;
+            //dateEnd.Day;
+            //dateEnd.Month;
+            //dateEnd.Year;
+
+            return result;
         }
     }
 }
