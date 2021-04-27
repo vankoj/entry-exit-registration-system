@@ -79,6 +79,25 @@ namespace Entry_Exit_Registration_System
             return exists;
         }
 
+        public List<String> getPositionNames()
+        {
+            List<String> result = new List<String>();
+
+            string query = "SELECT Position_Name FROM Position";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    result.Add(reader.GetString(0));
+                }
+            }
+
+            return result;
+        }
+
         // потребител (назначаване)
         public bool InsertEmployee(string EGN, string firstName, string lastName, int positionId, bool inOffice)
         {
