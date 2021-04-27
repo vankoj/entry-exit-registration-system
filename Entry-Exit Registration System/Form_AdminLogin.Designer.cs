@@ -124,6 +124,7 @@ namespace Entry_Exit_Registration_System
             this.textBox_username.Name = "textBox_username";
             this.textBox_username.Size = new System.Drawing.Size(186, 34);
             this.textBox_username.TabIndex = 10;
+            this.textBox_username.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_username_KeyPress);
             // 
             // textBox_password
             // 
@@ -133,6 +134,7 @@ namespace Entry_Exit_Registration_System
             this.textBox_password.Name = "textBox_password";
             this.textBox_password.Size = new System.Drawing.Size(186, 34);
             this.textBox_password.TabIndex = 11;
+            this.textBox_password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_password_KeyPress);
             // 
             // panel2
             // 

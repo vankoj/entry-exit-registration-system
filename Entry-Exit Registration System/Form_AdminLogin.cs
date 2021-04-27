@@ -83,5 +83,15 @@ namespace Entry_Exit_Registration_System
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void textBox_username_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return) login_button_Click(sender, e);
+        }
+
+        private void textBox_password_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return) login_button_Click(sender, e);
+        }
     }
 }
