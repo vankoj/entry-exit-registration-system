@@ -64,7 +64,7 @@ namespace Entry_Exit_Registration_System
             comboBox1.SelectedIndex = 0;
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            dateTimePicker2.Enabled = false;
+            dateTimePicker2.Visible = false;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -73,25 +73,29 @@ namespace Entry_Exit_Registration_System
             {
                 case 0:
                     dateTimePicker1.Format = DateTimePickerFormat.Long;
-                    dateTimePicker2.Enabled = false;
+                    dateTimePicker2.Visible = false;
+                    dateTimePicker1.Location = new Point(dateTimePicker1.Location.X, 40);
                     textBox1.Enabled = true;
                     break;
                 case 1:
                     dateTimePicker1.Format = DateTimePickerFormat.Custom;
                     dateTimePicker1.CustomFormat = "MMMM, yyyy";
-                    dateTimePicker2.Enabled = false;
+                    dateTimePicker2.Visible = false;
+                    dateTimePicker1.Location = new Point(dateTimePicker1.Location.X, 40);
                     textBox1.Enabled = true;
                     break;
                 case 2:
                     dateTimePicker1.Format = DateTimePickerFormat.Long;
                     dateTimePicker2.Format = DateTimePickerFormat.Long;
-                    dateTimePicker2.Enabled = true;
+                    dateTimePicker2.Visible = true;
+                    dateTimePicker1.Location = new Point(dateTimePicker1.Location.X, 15);
                     textBox1.Enabled = true;
                     break;
                 case 3:
                     dateTimePicker1.Format = DateTimePickerFormat.Long;
                     dateTimePicker2.Format = DateTimePickerFormat.Long;
-                    dateTimePicker2.Enabled = true;
+                    dateTimePicker2.Visible = true;
+                    dateTimePicker1.Location = new Point(dateTimePicker1.Location.X, 15);
                     textBox1.Enabled = false;
                     break;
                 default:
