@@ -99,11 +99,24 @@ namespace Entry_Exit_Registration_System
         }
 
         // потребител (назначаване)
-        public bool InsertEmployee(string EGN, string firstName, string lastName, int positionId, bool inOffice)
+        public bool InsertEmployee(string EGN, string firstName, string lastName, int positionId)
         {
             bool successful = false;
 
-            // TODO - тяло на метода
+
+            SqlCommand cmd = new SqlCommand("INSERT INTO Employee VALUES(@EGN, @firstName," +
+                                                                   "@lastName, @positionId" + false + ")", connection);
+
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@EGN", EGN);
+            cmd.Parameters.AddWithValue("@firstName", firstName);
+            cmd.Parameters.AddWithValue("@lastName", lastName);
+            cmd.Parameters.AddWithValue("@positionId", positionId);
+
+            cmd.Connection = connection;
+            cmd.ExecuteNonQuery();
+
+
 
             return successful;
         }
@@ -113,18 +126,69 @@ namespace Entry_Exit_Registration_System
         {
             bool successful = false;
 
-            // TODO - тяло на метода
+            SqlCommand cmd = new SqlCommand("INSERT INTO Position VALUES(@positionName)", connection);
+
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@positionName", positionName);
+
+            cmd.Connection = connection;
+            cmd.ExecuteNonQuery();
+
 
             return successful;
         }
 
         // събитие (чекиране)
         // потребител (влиза/излиза)
+        // TODO: провери формат на датата
         public bool CheckInEmployee(string EGN)
         {
+            DateTime today = DateTime.Today;
             bool successful = false;
+            bool isInOfice = false;
 
-            // TODO - тяло на метода
+
+            string query = "SELECT in_Office FROM Employee WHERE EGN LIKE @EGN";
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    isInOfice = reader.GetBoolean(0);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@EGN", EGN);
+
+
+            cmd.Connection = connection;
+            cmd.ExecuteNonQuery();
+
+            SqlCommand cmd1 = new SqlCommand("INSERT INTO Checkln VALUES(@EGN, @TODAY, @ISINOFICE)", connection);
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@EGN", EGN);
+            cmd.Parameters.AddWithValue("@TODAY", today);
+            cmd.Parameters.AddWithValue("@ISINOFICE", !isInOfice);
+
+
+            cmd.Connection = connection;
+            cmd.ExecuteNonQuery();
+
+            SqlCommand cmd2 = new SqlCommand("UPDATE Employee SET ISINOFICE = @ISINOFICE", connection);
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@ISINOFICE", !isInOfice);
+
+
+            cmd.Connection = connection;
+            cmd.ExecuteNonQuery();
+
 
             return successful;
         }
@@ -134,7 +198,15 @@ namespace Entry_Exit_Registration_System
         {
             bool successful = false;
 
-            // TODO - тяло на метода
+            SqlCommand cmd = new SqlCommand("DELETE Employee WHERE EGN LIKE @EGN", connection);
+
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@EGN", EGN);
+
+            cmd.Connection = connection;
+            cmd.ExecuteNonQuery();
+
+
 
             return successful;
         }
@@ -144,7 +216,14 @@ namespace Entry_Exit_Registration_System
         {
             bool successful = false;
 
-            // TODO - тяло на метода
+            SqlCommand cmd = new SqlCommand("DELETE Position WHERE Position_Name LIKE @positionName", connection);
+
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.AddWithValue("@positionName", positionName);
+
+            cmd.Connection = connection;
+            cmd.ExecuteNonQuery();
+
 
             return successful;
         }
