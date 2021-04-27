@@ -30,5 +30,21 @@ namespace Entry_Exit_Registration_System
         {
             InitializeComponent();
         }
+
+        private void UserControl_Report_Load(object sender, EventArgs e)
+        {
+            personName.Text = "Име на служител";
+
+            dataGridView1.Rows.Add("ime", "familiq", "egn", "poziciq", "chasive");
+            dataGridView1.Rows.Add("ime", "familiq", "egn", "poziciq", "chasive");
+            dataGridView1.Rows.Add("ime", "familiq", "egn", "poziciq", "chasive");
+            dataGridView1.Rows.Add("ime", "familiq", "egn", "poziciq", "chasive");
+            dataGridView1.Rows.Add("ime", "familiq", "egn", "poziciq", "chasive");
+            dataGridView1.Rows.Add("ime", "familiq", "egn", "poziciq", "chasive");
+            dataGridView1.Rows.Add("ime", "familiq", "egn", "poziciq", "chasive");
+            dataGridView1.Rows.Add("ime", "familiq", "egn", "poziciq", "chasive");
+            dataGridView1.Rows.Add("ime", "familiq", "egn", "poziciq", "chasive");
+            dataGridView1.Rows.Add("ime", "familiq", "egn", "poziciq", "chasive");
+        }
     }
 }
