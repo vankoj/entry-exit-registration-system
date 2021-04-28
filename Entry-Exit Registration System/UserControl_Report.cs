@@ -14,6 +14,7 @@ namespace Entry_Exit_Registration_System
     public partial class UserControl_Report : UserControl
     {
         private static UserControl_Report _instance;
+        private DatabaseManager database = DatabaseManager.Instance;
 
         // Roud Controls
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -46,8 +47,6 @@ namespace Entry_Exit_Registration_System
 
         private void UserControl_Report_Load(object sender, EventArgs e)
         {
-            DatabaseManager database = DatabaseManager.Instance;
-
             personName.Text = "Име на служител";
             period.Text = "Период";
             check_button.Text = "Проверка";
@@ -107,13 +106,18 @@ namespace Entry_Exit_Registration_System
         {
             switch (comboBox1.SelectedIndex)
             {
+                // TODO: Да се направи записването на резултатът и извеждането
                 case 0:
+                    database.GetEmployeeCheckInsForDate(textBox1.Text, dateTimePicker1.Value);
                     break;
                 case 1:
+                    database.GetEmployeeCheckInsForMonth(textBox1.Text, dateTimePicker1.Value);
                     break;
                 case 2:
+                    database.GetEmployeeCheckInsForPeriod(textBox1.Text, dateTimePicker1.Value, dateTimePicker2.Value);
                     break;
                 case 3:
+                    database.GetEmployeesForPeriod(dateTimePicker1.Value, dateTimePicker2.Value);
                     break;
                 default:
                     break;
