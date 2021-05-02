@@ -100,7 +100,7 @@ namespace Entry_Exit_Registration_System
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(900, 300);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.TabIndex = 5;
             // 
             // f_name
             // 
@@ -154,7 +154,8 @@ namespace Entry_Exit_Registration_System
             this.textBox1.Location = new System.Drawing.Point(17, 45);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(220, 30);
-            this.textBox1.TabIndex = 1;
+            this.textBox1.TabIndex = 0;
+            this.textBox1.Enter += new System.EventHandler(this.check_button_Click);
             // 
             // personName
             // 
@@ -171,26 +172,34 @@ namespace Entry_Exit_Registration_System
             this.dateTimePicker1.Location = new System.Drawing.Point(481, 15);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker1.TabIndex = 3;
+            this.dateTimePicker1.TabIndex = 2;
             this.dateTimePicker1.Value = new System.DateTime(2021, 4, 27, 18, 25, 10, 0);
+            this.dateTimePicker1.Enter += new System.EventHandler(this.check_button_Click);
             // 
             // dateTimePicker2
             // 
             this.dateTimePicker2.Location = new System.Drawing.Point(481, 53);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 22);
-            this.dateTimePicker2.TabIndex = 5;
+            this.dateTimePicker2.TabIndex = 3;
+            this.dateTimePicker2.Enter += new System.EventHandler(this.check_button_Click);
             // 
             // comboBox1
             // 
             this.comboBox1.BackColor = System.Drawing.Color.Cornsilk;
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Ден",
+            "Месец",
+            "Период",
+            "Всички служители"});
             this.comboBox1.Location = new System.Drawing.Point(253, 45);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(200, 30);
-            this.comboBox1.TabIndex = 6;
+            this.comboBox1.TabIndex = 1;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox1.Enter += new System.EventHandler(this.check_button_Click);
             // 
             // period
             // 
@@ -217,7 +226,7 @@ namespace Entry_Exit_Registration_System
             this.check_button.OnHoverButtonColor = System.Drawing.Color.SeaGreen;
             this.check_button.OnHoverTextColor = System.Drawing.Color.Black;
             this.check_button.Size = new System.Drawing.Size(124, 30);
-            this.check_button.TabIndex = 8;
+            this.check_button.TabIndex = 4;
             this.check_button.Text = "check_button";
             this.check_button.TextColor = System.Drawing.Color.Black;
             this.check_button.UseVisualStyleBackColor = true;
