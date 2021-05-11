@@ -72,13 +72,13 @@ namespace Entry_Exit_Registration_System
             this.release_employee_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.release_employee_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.release_employee_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.release_employee_button.Location = new System.Drawing.Point(650, 10);
+            this.release_employee_button.Location = new System.Drawing.Point(677, 10);
             this.release_employee_button.Margin = new System.Windows.Forms.Padding(10);
             this.release_employee_button.Name = "release_employee_button";
             this.release_employee_button.OnHoverBorderColor = System.Drawing.Color.Gray;
             this.release_employee_button.OnHoverButtonColor = System.Drawing.Color.Black;
             this.release_employee_button.OnHoverTextColor = System.Drawing.Color.White;
-            this.release_employee_button.Size = new System.Drawing.Size(220, 40);
+            this.release_employee_button.Size = new System.Drawing.Size(204, 40);
             this.release_employee_button.TabIndex = 4;
             this.release_employee_button.Text = "release_employee_button";
             this.release_employee_button.TextColor = System.Drawing.Color.White;
@@ -94,13 +94,13 @@ namespace Entry_Exit_Registration_System
             this.report_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.report_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.report_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.report_button.Location = new System.Drawing.Point(10, 10);
+            this.report_button.Location = new System.Drawing.Point(19, 10);
             this.report_button.Margin = new System.Windows.Forms.Padding(10);
             this.report_button.Name = "report_button";
             this.report_button.OnHoverBorderColor = System.Drawing.Color.Gray;
             this.report_button.OnHoverButtonColor = System.Drawing.Color.Black;
             this.report_button.OnHoverTextColor = System.Drawing.Color.White;
-            this.report_button.Size = new System.Drawing.Size(130, 40);
+            this.report_button.Size = new System.Drawing.Size(105, 40);
             this.report_button.TabIndex = 1;
             this.report_button.Text = "report_button";
             this.report_button.TextColor = System.Drawing.Color.White;
@@ -116,13 +116,13 @@ namespace Entry_Exit_Registration_System
             this.update_employee_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.update_employee_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.update_employee_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.update_employee_button.Location = new System.Drawing.Point(370, 10);
+            this.update_employee_button.Location = new System.Drawing.Point(405, 10);
             this.update_employee_button.Margin = new System.Windows.Forms.Padding(10);
             this.update_employee_button.Name = "update_employee_button";
             this.update_employee_button.OnHoverBorderColor = System.Drawing.Color.Gray;
             this.update_employee_button.OnHoverButtonColor = System.Drawing.Color.Black;
             this.update_employee_button.OnHoverTextColor = System.Drawing.Color.White;
-            this.update_employee_button.Size = new System.Drawing.Size(270, 40);
+            this.update_employee_button.Size = new System.Drawing.Size(261, 40);
             this.update_employee_button.TabIndex = 3;
             this.update_employee_button.Text = "update_employee_button";
             this.update_employee_button.TextColor = System.Drawing.Color.White;
@@ -138,13 +138,13 @@ namespace Entry_Exit_Registration_System
             this.hire_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.hire_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.hire_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.hire_button.Location = new System.Drawing.Point(155, 10);
+            this.hire_button.Location = new System.Drawing.Point(135, 10);
             this.hire_button.Margin = new System.Windows.Forms.Padding(10);
             this.hire_button.Name = "hire_button";
             this.hire_button.OnHoverBorderColor = System.Drawing.Color.Gray;
             this.hire_button.OnHoverButtonColor = System.Drawing.Color.Black;
             this.hire_button.OnHoverTextColor = System.Drawing.Color.White;
-            this.hire_button.Size = new System.Drawing.Size(200, 40);
+            this.hire_button.Size = new System.Drawing.Size(259, 40);
             this.hire_button.TabIndex = 2;
             this.hire_button.Text = "hire_button";
             this.hire_button.TextColor = System.Drawing.Color.White;
@@ -164,6 +164,7 @@ namespace Entry_Exit_Registration_System
             // 
             // userControl_Hire1
             // 
+            this.userControl_Hire1.BackColor = System.Drawing.Color.Gray;
             this.userControl_Hire1.Location = new System.Drawing.Point(828, 240);
             this.userControl_Hire1.Name = "userControl_Hire1";
             this.userControl_Hire1.Size = new System.Drawing.Size(8, 8);

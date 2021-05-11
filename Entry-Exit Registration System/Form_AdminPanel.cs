@@ -51,7 +51,7 @@ namespace Entry_Exit_Registration_System
             release_employee_button.Cursor = Cursors.Hand;
 
             report_button.Text = "Справка";
-            hire_button.Text = "Добави служител";
+            hire_button.Text = "Добави служител/позиция";
             update_employee_button.Text = "Актуализация на служител";
             release_employee_button.Text = "Премахни служител";
         }
