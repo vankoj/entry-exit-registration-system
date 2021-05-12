@@ -99,13 +99,13 @@ namespace Entry_Exit_Registration_System
         }
 
         // потребител (назначаване)
-        public bool InsertEmployee(string EGN, string firstName, string lastName, int positionId)
+        public bool InsertEmployee(string EGN, string firstName, string lastName, string positionName)
         {
             bool successful = false;
-
+            int positionId = 1; // TODO - Id-то да се взима според positionName от таблица Position (нова заявка да се добави)
 
             SqlCommand cmd = new SqlCommand("INSERT INTO Employee VALUES(@EGN, @firstName," +
-                                                                   "@lastName, @positionId" + false + ")", connection);
+                                                                   "@lastName, @positionId, 'false')", connection);
 
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.AddWithValue("@EGN", EGN);
@@ -113,10 +113,7 @@ namespace Entry_Exit_Registration_System
             cmd.Parameters.AddWithValue("@lastName", lastName);
             cmd.Parameters.AddWithValue("@positionId", positionId);
 
-            cmd.Connection = connection;
             cmd.ExecuteNonQuery();
-
-
 
             return successful;
         }
