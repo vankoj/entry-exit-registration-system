@@ -51,9 +51,9 @@ namespace Entry_Exit_Registration_System
             release_employee_button.Cursor = Cursors.Hand;
 
             report_button.Text = "Справка";
-            hire_button.Text = "Добави служител/позиция";
-            update_employee_button.Text = "Актуализация на служител";
-            release_employee_button.Text = "Премахни служител";
+            hire_button.Text = "Добави служител / позиция";
+            release_employee_button.Text = "Премахни служител / позиция";
+            update_employee_button.Text = "Служители";
         }
 
         private void report_button_Click(object sender, EventArgs e)
@@ -78,17 +78,6 @@ namespace Entry_Exit_Registration_System
             else UserControl_Hire.Instance.BringToFront();
         }
 
-        private void update_employee_button_Click(object sender, EventArgs e)
-        {
-            if (!panel.Controls.Contains(UserControl_UpdateEmployee.Instance))
-            {
-                panel.Controls.Add(UserControl_UpdateEmployee.Instance);
-                UserControl_UpdateEmployee.Instance.Dock = DockStyle.Fill;
-                UserControl_UpdateEmployee.Instance.BringToFront();
-            }
-            else UserControl_UpdateEmployee.Instance.BringToFront();
-        }
-
         private void release_employee_button_Click(object sender, EventArgs e)
         {
             if (!panel.Controls.Contains(UserControl_ReleaseEmployee.Instance))
@@ -98,6 +87,17 @@ namespace Entry_Exit_Registration_System
                 UserControl_ReleaseEmployee.Instance.BringToFront();
             }
             else UserControl_ReleaseEmployee.Instance.BringToFront();
+        }
+
+        private void update_employee_button_Click(object sender, EventArgs e)
+        {
+            if (!panel.Controls.Contains(UserControl_UpdateEmployee.Instance))
+            {
+                panel.Controls.Add(UserControl_UpdateEmployee.Instance);
+                UserControl_UpdateEmployee.Instance.Dock = DockStyle.Fill;
+                UserControl_UpdateEmployee.Instance.BringToFront();
+            }
+            else UserControl_UpdateEmployee.Instance.BringToFront();
         }
 
         private void closeButton_Click(object sender, EventArgs e)
