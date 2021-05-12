@@ -79,7 +79,7 @@ namespace Entry_Exit_Registration_System
             this.release_employee_button.OnHoverButtonColor = System.Drawing.Color.Black;
             this.release_employee_button.OnHoverTextColor = System.Drawing.Color.White;
             this.release_employee_button.Size = new System.Drawing.Size(302, 40);
-            this.release_employee_button.TabIndex = 4;
+            this.release_employee_button.TabIndex = 2;
             this.release_employee_button.Text = "release_employee_button";
             this.release_employee_button.TextColor = System.Drawing.Color.White;
             this.release_employee_button.UseVisualStyleBackColor = true;
@@ -101,7 +101,7 @@ namespace Entry_Exit_Registration_System
             this.report_button.OnHoverButtonColor = System.Drawing.Color.Black;
             this.report_button.OnHoverTextColor = System.Drawing.Color.White;
             this.report_button.Size = new System.Drawing.Size(105, 40);
-            this.report_button.TabIndex = 1;
+            this.report_button.TabIndex = 0;
             this.report_button.Text = "report_button";
             this.report_button.TextColor = System.Drawing.Color.White;
             this.report_button.UseVisualStyleBackColor = true;
@@ -145,7 +145,7 @@ namespace Entry_Exit_Registration_System
             this.hire_button.OnHoverButtonColor = System.Drawing.Color.Black;
             this.hire_button.OnHoverTextColor = System.Drawing.Color.White;
             this.hire_button.Size = new System.Drawing.Size(269, 40);
-            this.hire_button.TabIndex = 2;
+            this.hire_button.TabIndex = 1;
             this.hire_button.Text = "hire_button";
             this.hire_button.TextColor = System.Drawing.Color.White;
             this.hire_button.UseVisualStyleBackColor = true;

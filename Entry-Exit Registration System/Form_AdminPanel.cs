@@ -54,6 +54,8 @@ namespace Entry_Exit_Registration_System
             hire_button.Text = "Добави служител / позиция";
             release_employee_button.Text = "Премахни служител / позиция";
             update_employee_button.Text = "Служители";
+
+            this.ActiveControl = report_button;
         }
 
         private void report_button_Click(object sender, EventArgs e)
