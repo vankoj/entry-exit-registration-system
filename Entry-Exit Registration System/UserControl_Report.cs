@@ -47,13 +47,13 @@ namespace Entry_Exit_Registration_System
 
         private void UserControl_Report_Load(object sender, EventArgs e)
         {
-            this.ActiveControl = textBox1;
+            this.ActiveControl = textBox_egn;
 
-            personName.Text = "ЕГН на служител";
+            personEGN.Text = "ЕГН на служител";
             period.Text = "Период";
             check_button.Text = "Проверка";
 
-            textBox1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, textBox1.Width, textBox1.Height, 30, 30));
+            textBox_egn.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, textBox_egn.Width, textBox_egn.Height, 30, 30));
             comboBox1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, comboBox1.Width, comboBox1.Height, 30, 30));
             dateTimePicker1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, dateTimePicker1.Width, dateTimePicker1.Height, 30, 30));
             dateTimePicker2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, dateTimePicker2.Width, dateTimePicker2.Height, 30, 30));
@@ -72,28 +72,28 @@ namespace Entry_Exit_Registration_System
                     dateTimePicker1.Format = DateTimePickerFormat.Long;
                     dateTimePicker2.Visible = false;
                     dateTimePicker1.Location = new Point(dateTimePicker1.Location.X, 40);
-                    textBox1.Enabled = true;
+                    textBox_egn.Enabled = true;
                     break;
                 case 1:
                     dateTimePicker1.Format = DateTimePickerFormat.Custom;
                     dateTimePicker1.CustomFormat = "MMMM, yyyy";
                     dateTimePicker2.Visible = false;
                     dateTimePicker1.Location = new Point(dateTimePicker1.Location.X, 40);
-                    textBox1.Enabled = true;
+                    textBox_egn.Enabled = true;
                     break;
                 case 2:
                     dateTimePicker1.Format = DateTimePickerFormat.Long;
                     dateTimePicker2.Format = DateTimePickerFormat.Long;
                     dateTimePicker2.Visible = true;
                     dateTimePicker1.Location = new Point(dateTimePicker1.Location.X, 15);
-                    textBox1.Enabled = true;
+                    textBox_egn.Enabled = true;
                     break;
                 case 3:
                     dateTimePicker1.Format = DateTimePickerFormat.Long;
                     dateTimePicker2.Format = DateTimePickerFormat.Long;
                     dateTimePicker2.Visible = true;
                     dateTimePicker1.Location = new Point(dateTimePicker1.Location.X, 15);
-                    textBox1.Enabled = false;
+                    textBox_egn.Enabled = false;
                     break;
                 default:
                     break;
@@ -108,9 +108,9 @@ namespace Entry_Exit_Registration_System
             switch (comboBox1.SelectedIndex)
             {
                 case 0:
-                    if (textBox1.Text.Length > 0)
+                    if (textBox_egn.Text.Length == 10)
                     {
-                        List<CheckInEvent> day = database.GetEmployeeCheckInsForDate(textBox1.Text, dateTimePicker1.Value);
+                        List<CheckInEvent> day = database.GetEmployeeCheckInsForDate(textBox_egn.Text, dateTimePicker1.Value);
                         if (day.Count <= 0)
                         {
                             MessageBox.Show("Не съществуват такива записи", "Грешка", MessageBoxButtons.OK);
@@ -138,9 +138,9 @@ namespace Entry_Exit_Registration_System
                     }
                     break;
                 case 1:
-                    if (textBox1.Text.Length > 0)
+                    if (textBox_egn.Text.Length == 10)
                     {
-                        List<CheckInEvent> month = database.GetEmployeeCheckInsForMonth(textBox1.Text, dateTimePicker1.Value);
+                        List<CheckInEvent> month = database.GetEmployeeCheckInsForMonth(textBox_egn.Text, dateTimePicker1.Value);
                         if (month.Count <= 0)
                         {
                             MessageBox.Show("Не съществуват такива записи", "Грешка", MessageBoxButtons.OK);
@@ -168,9 +168,9 @@ namespace Entry_Exit_Registration_System
                     }
                     break;
                 case 2:
-                    if (textBox1.Text.Length > 0)
+                    if (textBox_egn.Text.Length == 10)
                     {
-                        List<CheckInEvent> period = database.GetEmployeeCheckInsForPeriod(textBox1.Text, dateTimePicker1.Value, dateTimePicker2.Value);
+                        List<CheckInEvent> period = database.GetEmployeeCheckInsForPeriod(textBox_egn.Text, dateTimePicker1.Value, dateTimePicker2.Value);
                         if (period.Count <= 0)
                         {
                             MessageBox.Show("Не съществуват такива записи", "Грешка", MessageBoxButtons.OK);
@@ -223,6 +223,21 @@ namespace Entry_Exit_Registration_System
                 default:
                     break;
             }
+        }
+
+        private void textBox_egn_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) || textBox_egn.Text.Length >= 10)
+            {
+                e.Handled = true;
+                textBox_egn.Focus();
+            }
+            if (e.KeyChar == (char)Keys.Back)
+            {
+                e.Handled = false;
+                textBox_egn.Focus();
+            }
+            if (e.KeyChar == (char)Keys.Return) check_button_Click(sender, e);
         }
     }
 }
