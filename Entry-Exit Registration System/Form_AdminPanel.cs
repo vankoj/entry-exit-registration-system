@@ -13,7 +13,9 @@ namespace Entry_Exit_Registration_System
 {
     public partial class Form_AdminPanel : Form
     {
-        // Roud Controls
+        private static String title = "Чекиране на служители";
+
+        // Round Controls
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
             (
@@ -44,7 +46,7 @@ namespace Entry_Exit_Registration_System
         {
             minimizeButton.Cursor = Cursors.Hand;
             closeButton.Cursor = Cursors.Hand;
-            windowName.Text = "Чекиране на служители";
+            windowName.Text = title;
             report_button.Cursor = Cursors.Hand;
             hire_button.Cursor = Cursors.Hand;
             update_employee_button.Cursor = Cursors.Hand;
@@ -56,50 +58,80 @@ namespace Entry_Exit_Registration_System
             update_employee_button.Text = "Служители";
 
             this.ActiveControl = report_button;
+
+            loadUserControls();
         }
 
-        private void report_button_Click(object sender, EventArgs e)
+        private void loadUserControls()
         {
+            Panel clearPanel = new Panel();
+            clearPanel.Size = new Size(900, 395);
+            clearPanel.BackColor = Color.SeaGreen;
+
+            if (!panel.Controls.Contains(clearPanel))
+            {
+                panel.Controls.Add(clearPanel);
+            }
+
+            if (!panel.Controls.Contains(null))
+            {
+                panel.Controls.Add(null);
+            }
+            
             if (!panel.Controls.Contains(UserControl_Report.Instance))
             {
                 panel.Controls.Add(UserControl_Report.Instance);
                 UserControl_Report.Instance.Dock = DockStyle.Fill;
-                UserControl_Report.Instance.BringToFront();
             }
-            else UserControl_Report.Instance.BringToFront();
-        }
 
-        private void hire_button_Click(object sender, EventArgs e)
-        {
             if (!panel.Controls.Contains(UserControl_Hire.Instance))
             {
                 panel.Controls.Add(UserControl_Hire.Instance);
                 UserControl_Hire.Instance.Dock = DockStyle.Fill;
-                UserControl_Hire.Instance.BringToFront();
             }
-            else UserControl_Hire.Instance.BringToFront();
-        }
 
-        private void release_employee_button_Click(object sender, EventArgs e)
-        {
             if (!panel.Controls.Contains(UserControl_ReleaseEmployee.Instance))
             {
                 panel.Controls.Add(UserControl_ReleaseEmployee.Instance);
                 UserControl_ReleaseEmployee.Instance.Dock = DockStyle.Fill;
-                UserControl_ReleaseEmployee.Instance.BringToFront();
             }
-            else UserControl_ReleaseEmployee.Instance.BringToFront();
-        }
 
-        private void update_employee_button_Click(object sender, EventArgs e)
-        {
             if (!panel.Controls.Contains(UserControl_UpdateEmployee.Instance))
             {
                 panel.Controls.Add(UserControl_UpdateEmployee.Instance);
                 UserControl_UpdateEmployee.Instance.Dock = DockStyle.Fill;
-                UserControl_UpdateEmployee.Instance.BringToFront();
             }
-            else UserControl_UpdateEmployee.Instance.BringToFront();
+
+            // Задава чист панел за начален фон
+            clearPanel.BringToFront();
+        }
+
+        private void report_button_Click(object sender, EventArgs e)
+        {
+            windowName.Text = title + " - Справка";
+            UserControl_Report.Instance.BringToFront();
+            UserControl_Report.Instance.Focus();
+        }
+
+        private void hire_button_Click(object sender, EventArgs e)
+        {
+            windowName.Text = title + " - Добави служител / позиция";
+            UserControl_Hire.Instance.BringToFront();
+            UserControl_Hire.Instance.Focus();
+        }
+
+        private void release_employee_button_Click(object sender, EventArgs e)
+        {
+            windowName.Text = title + " - Премахни служител / позиция";
+            UserControl_ReleaseEmployee.Instance.BringToFront();
+            UserControl_ReleaseEmployee.Instance.Focus();
+        }
+
+        private void update_employee_button_Click(object sender, EventArgs e)
+        {
+            windowName.Text = title + " - Служители";
+            UserControl_UpdateEmployee.Instance.BringToFront();
+            UserControl_UpdateEmployee.Instance.Focus();
         }
 
         private void closeButton_Click(object sender, EventArgs e)

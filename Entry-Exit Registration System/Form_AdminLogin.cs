@@ -13,7 +13,7 @@ namespace Entry_Exit_Registration_System
 {
     public partial class Form_AdminLogin : Form
     {
-        // Roud Controls
+        // Round Controls
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
             (

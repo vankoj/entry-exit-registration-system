@@ -14,9 +14,10 @@ namespace Entry_Exit_Registration_System
     public partial class UserControl_Hire : UserControl
     {
         private static UserControl_Hire _instance;
-        private DatabaseManager database = DatabaseManager.Instance;
+        private DatabaseManager database;
+        private int counter = 0;
 
-        // Roud Controls
+        // Round Controls
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
             (
@@ -46,12 +47,20 @@ namespace Entry_Exit_Registration_System
 
         private void UserControl_Hire_Load(object sender, EventArgs e)
         {
+            this.Controls.Clear();
+            this.InitializeComponent();
+
+            database = DatabaseManager.Instance;
+
             this.ActiveControl = textBox_f_name;
 
+            employee_lable.Text = "Въвеждане на служител";
             f_name.Text = "Име";
             l_name.Text = "Фамилия";
             egn.Text = "ЕГН";
             position.Text = "Позоция";
+            employee_exist.Text = "Служител с това егн вече е нает!";
+            employee_exist.Visible = false;
             hire_button.Text = "Въведи служител";
 
             position_lable.Text = "Въвеждане на позиция";
@@ -74,7 +83,7 @@ namespace Entry_Exit_Registration_System
             int index = 1;
 
             List<String> positions = database.getPositionNames();
-            foreach (string position in positions)
+            foreach (String position in positions)
             {
                 comboBox_position.Items.Add(position);
                 dataGridView1.Rows.Add(index++, position);
@@ -89,11 +98,25 @@ namespace Entry_Exit_Registration_System
                 !String.IsNullOrEmpty(textBox_egn.Text) && !String.IsNullOrEmpty(comboBox_position.Text) &&
                 textBox_egn.TextLength == 10)
             {
-                database.InsertEmployee(textBox_egn.Text, textBox_f_name.Text, textBox_l_name.Text, comboBox_position.SelectedItem.ToString());
+                bool successful = true;
+
+                successful = database.InsertEmployee(textBox_egn.Text, textBox_f_name.Text, textBox_l_name.Text, comboBox_position.SelectedItem.ToString());
+                textBox_f_name.Clear();
+                textBox_l_name.Clear();
+                textBox_egn.Clear();
+                comboBox_position.SelectedItem = null;
+                textBox_f_name.Focus();
+
+                if (!successful)
+                {
+                    employee_exist.Visible = true;
+                    timer_employee_exist.Start();
+                }
             }
             else
             {
                 MessageBox.Show("Моля попълнете всички полета!", "Грешка");
+                textBox_f_name.Focus();
             }
         }
 
@@ -103,10 +126,13 @@ namespace Entry_Exit_Registration_System
             {
                 database.InsertPosition(textBox_position_name.Text);
                 refreshPositions();
+                textBox_position_name.Clear();
+                textBox_position_name.Focus();
             }
             else
             {
                 MessageBox.Show("Моля попълнете име на позицията!", "Грешка");
+                textBox_position_name.Focus();
             }
         }
 
@@ -145,6 +171,11 @@ namespace Entry_Exit_Registration_System
             if (e.KeyChar == (char)Keys.Return) hire_button_Click(sender, e);
         }
 
+        private void comboBox_position_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return) hire_button_Click(sender, e);
+        }
+
         private void textBox_position_name_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
@@ -153,6 +184,18 @@ namespace Entry_Exit_Registration_System
                 textBox_l_name.Focus();
             }
             if (e.KeyChar == (char)Keys.Return) add_position_button_Click(sender, e);
+        }
+
+        private void timer_employee_exist_Tick(object sender, EventArgs e)
+        {
+            ++counter;
+
+            if (counter == 30)
+            {
+                timer_employee_exist.Stop();
+                employee_exist.Visible = false;
+                counter = 0;
+            }
         }
     }
 }

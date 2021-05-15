@@ -44,9 +44,9 @@ namespace Entry_Exit_Registration_System
             this.timer5 = new System.Windows.Forms.Timer(this.components);
             this.timer6 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.windowName = new System.Windows.Forms.Label();
             this.logo = new System.Windows.Forms.PictureBox();
             this.closeButton = new System.Windows.Forms.PictureBox();
+            this.windowName = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.closeButton)).BeginInit();
@@ -88,9 +88,10 @@ namespace Entry_Exit_Registration_System
             // 
             // fn1
             // 
+            this.fn1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.fn1.AutoSize = true;
             this.fn1.Font = new System.Drawing.Font("Mistral", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.fn1.Location = new System.Drawing.Point(367, 50);
+            this.fn1.Location = new System.Drawing.Point(409, 50);
             this.fn1.Name = "fn1";
             this.fn1.Size = new System.Drawing.Size(53, 39);
             this.fn1.TabIndex = 3;
@@ -98,9 +99,10 @@ namespace Entry_Exit_Registration_System
             // 
             // fn2
             // 
+            this.fn2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.fn2.AutoSize = true;
             this.fn2.Font = new System.Drawing.Font("Mistral", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.fn2.Location = new System.Drawing.Point(367, 90);
+            this.fn2.Location = new System.Drawing.Point(409, 90);
             this.fn2.Name = "fn2";
             this.fn2.Size = new System.Drawing.Size(53, 39);
             this.fn2.TabIndex = 4;
@@ -108,9 +110,10 @@ namespace Entry_Exit_Registration_System
             // 
             // fn3
             // 
+            this.fn3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.fn3.AutoSize = true;
             this.fn3.Font = new System.Drawing.Font("Mistral", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.fn3.Location = new System.Drawing.Point(367, 130);
+            this.fn3.Location = new System.Drawing.Point(409, 130);
             this.fn3.Name = "fn3";
             this.fn3.Size = new System.Drawing.Size(53, 39);
             this.fn3.TabIndex = 5;
@@ -145,20 +148,9 @@ namespace Entry_Exit_Registration_System
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(518, 40);
+            this.panel1.Size = new System.Drawing.Size(560, 40);
             this.panel1.TabIndex = 7;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
-            // 
-            // windowName
-            // 
-            this.windowName.AutoSize = true;
-            this.windowName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.windowName.Location = new System.Drawing.Point(43, 7);
-            this.windowName.Name = "windowName";
-            this.windowName.Size = new System.Drawing.Size(161, 29);
-            this.windowName.TabIndex = 1;
-            this.windowName.Text = "windowName";
-            this.windowName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
             // logo
             // 
@@ -177,7 +169,7 @@ namespace Entry_Exit_Registration_System
             this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.closeButton.BackColor = System.Drawing.Color.Transparent;
             this.closeButton.Image = global::Entry_Exit_Registration_System.Properties.Resources.close;
-            this.closeButton.Location = new System.Drawing.Point(483, 4);
+            this.closeButton.Location = new System.Drawing.Point(525, 4);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(32, 32);
             this.closeButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -185,12 +177,23 @@ namespace Entry_Exit_Registration_System
             this.closeButton.TabStop = false;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
+            // windowName
+            // 
+            this.windowName.AutoSize = true;
+            this.windowName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.windowName.Location = new System.Drawing.Point(43, 7);
+            this.windowName.Name = "windowName";
+            this.windowName.Size = new System.Drawing.Size(161, 29);
+            this.windowName.TabIndex = 1;
+            this.windowName.Text = "windowName";
+            this.windowName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            // 
             // Form_EasterEgg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SeaGreen;
-            this.ClientSize = new System.Drawing.Size(518, 180);
+            this.ClientSize = new System.Drawing.Size(560, 180);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.fn1);
             this.Controls.Add(this.fn2);

@@ -24,7 +24,7 @@ namespace Entry_Exit_Registration_System
         public Form_EasterEgg()
         {
             InitializeComponent();
-            this.Text = "Чекиране на служители";
+            this.Text = "Чекиране на служители - Изработили";
             this.MaximizeBox = false;
         }
 
@@ -36,7 +36,7 @@ namespace Entry_Exit_Registration_System
         private void Form_EasterEgg_Load(object sender, EventArgs e)
         {
             closeButton.Cursor = Cursors.Hand;
-            windowName.Text = "Чекиране на служители";
+            windowName.Text = "Чекиране на служители - Изработили";
 
             name1.Text = "";
             name2.Text = "";

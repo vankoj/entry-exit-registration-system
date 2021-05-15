@@ -49,6 +49,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>id-card.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -171,6 +175,7 @@
     <None Include="Resources\close.png" />
     <None Include="Resources\id-card.png" />
     <None Include="Resources\minimize.png" />
+    <Content Include="id-card.ico" />
     <Content Include="WorkersRegistartion.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

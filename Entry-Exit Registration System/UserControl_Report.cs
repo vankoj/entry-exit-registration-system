@@ -14,9 +14,9 @@ namespace Entry_Exit_Registration_System
     public partial class UserControl_Report : UserControl
     {
         private static UserControl_Report _instance;
-        private DatabaseManager database = DatabaseManager.Instance;
+        private DatabaseManager database;
 
-        // Roud Controls
+        // Round Controls
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
             (
@@ -47,6 +47,11 @@ namespace Entry_Exit_Registration_System
 
         private void UserControl_Report_Load(object sender, EventArgs e)
         {
+            this.Controls.Clear();
+            this.InitializeComponent();
+
+            database = DatabaseManager.Instance;
+
             this.ActiveControl = textBox_egn;
 
             personEGN.Text = "ЕГН на служител";
@@ -114,6 +119,7 @@ namespace Entry_Exit_Registration_System
                         if (day.Count <= 0)
                         {
                             MessageBox.Show("Не съществуват такива записи", "Грешка", MessageBoxButtons.OK);
+                            textBox_egn.Focus();
                         }
                         else
                         {
@@ -134,7 +140,8 @@ namespace Entry_Exit_Registration_System
                     }
                     else
                     {
-                        MessageBox.Show("Моля въведете ЕГН", "Грешка", MessageBoxButtons.OK);
+                        MessageBox.Show("Моля въведете валидно ЕГН", "Грешка", MessageBoxButtons.OK);
+                        textBox_egn.Focus();
                     }
                     break;
                 case 1:
@@ -144,6 +151,7 @@ namespace Entry_Exit_Registration_System
                         if (month.Count <= 0)
                         {
                             MessageBox.Show("Не съществуват такива записи", "Грешка", MessageBoxButtons.OK);
+                            textBox_egn.Focus();
                         }
                         else
                         {
@@ -164,7 +172,8 @@ namespace Entry_Exit_Registration_System
                     }
                     else
                     {
-                        MessageBox.Show("Моля въведете ЕГН", "Грешка", MessageBoxButtons.OK);
+                        MessageBox.Show("Моля въведете валидно ЕГН", "Грешка", MessageBoxButtons.OK);
+                        textBox_egn.Focus();
                     }
                     break;
                 case 2:
@@ -174,6 +183,7 @@ namespace Entry_Exit_Registration_System
                         if (period.Count <= 0)
                         {
                             MessageBox.Show("Не съществуват такива записи", "Грешка", MessageBoxButtons.OK);
+                            textBox_egn.Focus();
                         }
                         else
                         {
@@ -194,7 +204,8 @@ namespace Entry_Exit_Registration_System
                     }
                     else
                     {
-                        MessageBox.Show("Моля въведете ЕГН", "Грешка", MessageBoxButtons.OK);
+                        MessageBox.Show("Моля въведете валидно ЕГН", "Грешка", MessageBoxButtons.OK);
+                        textBox_egn.Focus();
                     }
                     break;
                 case 3:
@@ -202,6 +213,7 @@ namespace Entry_Exit_Registration_System
                     if (periodAll.Count <= 0)
                     {
                         MessageBox.Show("Не съществуват такива записи", "Грешка", MessageBoxButtons.OK);
+                        textBox_egn.Focus();
                     }
                     else
                     {

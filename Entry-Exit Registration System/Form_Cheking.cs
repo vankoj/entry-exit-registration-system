@@ -15,7 +15,7 @@ namespace Entry_Exit_Registration_System
     {
         private DatabaseManager databaseManager;
 
-        // Roud Controls
+        // Round Controls
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
             (
