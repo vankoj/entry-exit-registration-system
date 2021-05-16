@@ -85,14 +85,21 @@ namespace Entry_Exit_Registration_System
 
             string query = "SELECT Position_Name FROM Position";
 
-            SqlCommand cmd = new SqlCommand(query, connection);
-
-            using (SqlDataReader reader = cmd.ExecuteReader())
+            try
             {
-                while (reader.Read())
+                SqlCommand cmd = new SqlCommand(query, connection);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    result.Add(reader.GetString(0));
+                    while (reader.Read())
+                    {
+                        result.Add(reader.GetString(0));
+                    }
                 }
+            }
+            catch (Exception)
+            {
+                result = null;
             }
 
             return result;
@@ -108,19 +115,26 @@ namespace Entry_Exit_Registration_System
                 " JOIN Position P" +
                 " ON E.Position_Id = P.Id";
 
-            SqlCommand cmd = new SqlCommand(query, connection);
-
-            using (SqlDataReader reader = cmd.ExecuteReader())
+            try
             {
-                while (reader.Read())
-                {
-                    EGN = reader.GetString(0);
-                    firstName = reader.GetString(1);
-                    lastName = reader.GetString(2);
-                    positionName = reader.GetString(3);
+                SqlCommand cmd = new SqlCommand(query, connection);
 
-                    result.Add(new CheckInEvent(EGN, firstName, lastName, positionName, new DateTime(), false));
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        EGN = reader.GetString(0);
+                        firstName = reader.GetString(1);
+                        lastName = reader.GetString(2);
+                        positionName = reader.GetString(3);
+
+                        result.Add(new CheckInEvent(EGN, firstName, lastName, positionName, new DateTime(), false));
+                    }
                 }
+            }
+            catch (Exception)
+            {
+                result = null;
             }
 
             return result;
@@ -131,6 +145,7 @@ namespace Entry_Exit_Registration_System
         {
             bool successful = false;
             int positionId = 1; // TODO - Id-то да се взима според positionName от таблица Position (нова заявка да се добави)
+            // TODO - добави try/catch като се добави и другата заявка
 
             SqlCommand cmd = new SqlCommand("INSERT INTO Employee VALUES(@EGN, @firstName," +
                                                                    "@lastName, @positionId, 'false')", connection);
@@ -147,17 +162,37 @@ namespace Entry_Exit_Registration_System
         }
 
         // позиция (добавяне)
-        public bool InsertPosition(string positionName) // TODO - да не се повтарят (връщай false при повторение и не добавяй новата позиция)
+        public bool InsertPosition(string positionName)
         {
-            bool successful = false;
+            bool successful = true;
 
-            SqlCommand cmd = new SqlCommand("INSERT INTO Position VALUES(@positionName)", connection);
+            string query = "SELECT Position_Name FROM POSITION" +
+                " WHERE Position_Name LIKE @positionName";
 
-            cmd.CommandType = CommandType.Text;
-            cmd.Parameters.AddWithValue("@positionName", positionName);
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
 
-            cmd.Connection = connection;
-            cmd.ExecuteNonQuery();
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@positionName", positionName);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        successful = false;
+                        return successful;
+                    }
+                }
+
+                query = "INSERT INTO Position VALUES(@positionName)";
+                cmd.CommandText = query;
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                successful = false;
+            }
 
             return successful;
         }
@@ -168,51 +203,43 @@ namespace Entry_Exit_Registration_System
         public bool CheckInEmployee(string EGN)
         {
             DateTime today = DateTime.Today;
-            bool successful = false;
+            bool successful = true;
             bool isInOfice = false;
 
-
             string query = "SELECT in_Office FROM Employee WHERE EGN LIKE @EGN";
-            SqlCommand cmd = new SqlCommand(query, connection);
 
-            using (SqlDataReader reader = cmd.ExecuteReader())
+            try
             {
-                if (reader.Read())
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@EGN", EGN);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    isInOfice = reader.GetBoolean(0);
+                    if (reader.Read())
+                    {
+                        isInOfice = reader.GetBoolean(0);
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
-                else
-                {
-                    return false;
-                }
+
+                cmd.CommandText = "INSERT INTO Checkln VALUES(@EGN, @TODAY, @ISINOFICE)";
+                cmd.Parameters.AddWithValue("@EGN", EGN);
+                cmd.Parameters.AddWithValue("@TODAY", today);
+                cmd.Parameters.AddWithValue("@ISINOFICE", !isInOfice);
+                cmd.ExecuteNonQuery();
+
+                cmd.CommandText = "UPDATE Employee SET ISINOFICE = @ISINOFICE";
+                cmd.Parameters.AddWithValue("@ISINOFICE", !isInOfice);
+                cmd.ExecuteNonQuery();
             }
-
-
-            cmd.CommandType = CommandType.Text;
-            cmd.Parameters.AddWithValue("@EGN", EGN);
-
-
-            cmd.Connection = connection;
-            cmd.ExecuteNonQuery();
-
-            SqlCommand cmd1 = new SqlCommand("INSERT INTO Checkln VALUES(@EGN, @TODAY, @ISINOFICE)", connection);
-            cmd.CommandType = CommandType.Text;
-            cmd.Parameters.AddWithValue("@EGN", EGN);
-            cmd.Parameters.AddWithValue("@TODAY", today);
-            cmd.Parameters.AddWithValue("@ISINOFICE", !isInOfice);
-
-
-            cmd.Connection = connection;
-            cmd.ExecuteNonQuery();
-
-            SqlCommand cmd2 = new SqlCommand("UPDATE Employee SET ISINOFICE = @ISINOFICE", connection);
-            cmd.CommandType = CommandType.Text;
-            cmd.Parameters.AddWithValue("@ISINOFICE", !isInOfice);
-
-
-            cmd.Connection = connection;
-            cmd.ExecuteNonQuery();
-
+            catch (Exception)
+            {
+                successful = false;
+            }
 
             return successful;
         }
@@ -220,17 +247,20 @@ namespace Entry_Exit_Registration_System
         // потребител (уволнен)
         public bool RemoveEmployee(string EGN)
         {
-            bool successful = false;
+            bool successful = true;
 
             SqlCommand cmd = new SqlCommand("DELETE Employee WHERE EGN LIKE @EGN", connection);
 
-            cmd.CommandType = CommandType.Text;
-            cmd.Parameters.AddWithValue("@EGN", EGN);
-
-            cmd.Connection = connection;
-            cmd.ExecuteNonQuery();
-
-
+            try
+            {
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@EGN", EGN);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                successful = false;
+            }
 
             return successful;
         }
@@ -238,16 +268,20 @@ namespace Entry_Exit_Registration_System
         // позиция (премахване)
         public bool RemovePosition(string positionName)
         {
-            bool successful = false;
+            bool successful = true;
 
             SqlCommand cmd = new SqlCommand("DELETE Position WHERE Position_Name LIKE @positionName", connection);
 
-            cmd.CommandType = CommandType.Text;
-            cmd.Parameters.AddWithValue("@positionName", positionName);
-
-            cmd.Connection = connection;
-            cmd.ExecuteNonQuery();
-
+            try
+            {
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@positionName", positionName);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                successful = false;
+            }
 
             return successful;
         }
@@ -262,6 +296,7 @@ namespace Entry_Exit_Registration_System
             result.Add(new CheckInEvent("991111222222", "Петър", "Драганов", "разработчик", new DateTime(2010, 12, 1, 12, 21, 31), true));
 
             // TODO - тяло на метода
+            // TODO - try/catch
 
             //date.Day;
             //date.Month;
@@ -276,6 +311,7 @@ namespace Entry_Exit_Registration_System
             List<CheckInEvent> result = new List<CheckInEvent>();
 
             // TODO - тяло на метода
+            // TODO - try/catch
 
             //date.Month;
             //date.Year;
@@ -289,6 +325,7 @@ namespace Entry_Exit_Registration_System
             List<CheckInEvent> result = new List<CheckInEvent>();
 
             // TODO - тяло на метода
+            // TODO - try/catch
 
             //dateStart.Day;
             //dateStart.Month;
@@ -306,6 +343,7 @@ namespace Entry_Exit_Registration_System
             List<CheckInEvent> result = new List<CheckInEvent>();
 
             // TODO - тяло на метода
+            // TODO - try/catch
 
             //dateStart.Day;
             //dateStart.Month;
