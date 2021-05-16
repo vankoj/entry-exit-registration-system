@@ -127,7 +127,7 @@ namespace Entry_Exit_Registration_System
                             {
                                 if (item.Is_Entry)
                                 {
-                                    dataGridView1.Rows.Add(item.F_Name, item.L_Name, item.EGN, item.EGN, "На работа");
+                                    dataGridView1.Rows.Add(item.F_Name, item.L_Name, item.EGN, item.Position_Name, "На работа");
                                 }
                                 else
                                 {
