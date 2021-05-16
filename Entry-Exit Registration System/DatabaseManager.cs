@@ -98,6 +98,34 @@ namespace Entry_Exit_Registration_System
             return result;
         }
 
+        public List<CheckInEvent> getEmployees()
+        {
+            List<CheckInEvent> result = new List<CheckInEvent>();
+            string EGN, firstName, lastName, positionName;
+
+            string query = "SELECT E.EGN, E.F_Name, E.L_Name, P.Position_Name" +
+                " FROM Employee E" +
+                " JOIN Position P" +
+                " ON E.Position_Id = P.Id";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    EGN = reader.GetString(0);
+                    firstName = reader.GetString(1);
+                    lastName = reader.GetString(2);
+                    positionName = reader.GetString(3);
+
+                    result.Add(new CheckInEvent(EGN, firstName, lastName, positionName, new DateTime(), false));
+                }
+            }
+
+            return result;
+        }
+
         // потребител (назначаване)
         public bool InsertEmployee(string EGN, string firstName, string lastName, string positionName)
         {
@@ -119,7 +147,7 @@ namespace Entry_Exit_Registration_System
         }
 
         // позиция (добавяне)
-        public bool InsertPosition(string positionName)
+        public bool InsertPosition(string positionName) // TODO - да не се повтарят (връщай false при повторение и не добавяй новата позиция)
         {
             bool successful = false;
 
@@ -130,7 +158,6 @@ namespace Entry_Exit_Registration_System
 
             cmd.Connection = connection;
             cmd.ExecuteNonQuery();
-
 
             return successful;
         }
