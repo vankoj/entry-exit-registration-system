@@ -13,6 +13,8 @@ namespace Entry_Exit_Registration_System
     public partial class UserControl_ReleaseEmployee : UserControl
     {
         private static UserControl_ReleaseEmployee _instance;
+        private DatabaseManager database;
+        private int counter = 0;
 
         public static UserControl_ReleaseEmployee Instance
         {
@@ -29,6 +31,138 @@ namespace Entry_Exit_Registration_System
         public UserControl_ReleaseEmployee()
         {
             InitializeComponent();
+        }
+
+        private void UserControl_ReleaseEmployee_Load(object sender, EventArgs e)
+        {
+            this.Controls.Clear();
+            this.InitializeComponent();
+
+            database = DatabaseManager.Instance;
+
+            this.ActiveControl = dataGridView_employees;
+
+            employee_lable.Text = "Премахване на служител";
+            employee_removed.Text = "Служителят е премахнат!";
+            employee_removed.Visible = false;
+            release_employrr_button.Text = "Премахни служител";
+
+            position_lable.Text = "Премахване на позиция";
+            position_removed.Text = "Позицичта е премахната";
+            position_removed.Visible = false;
+            remove_position_button.Text = "Премахни позиция";
+
+            dataGridViewRefresh();
+        }
+
+        private void timer_removed_lable_Tick(object sender, EventArgs e)
+        {
+            ++counter;
+
+            if (counter == 30)
+            {
+                timer_removed_lable.Stop();
+                employee_removed.Visible = false;
+                position_removed.Visible = false;
+                counter = 0;
+            }
+        }
+
+        private void dataGridViewRefresh()
+        {
+            dataGridView_employees.Rows.Clear();
+            dataGridView_positions.Rows.Clear();
+            int index = 1;
+
+            List<CheckInEvent> employees = database.getEmployees();
+            if (employees != null && employees.Count > 0) {
+                foreach (CheckInEvent employee in employees)
+                {
+                    dataGridView_employees.Rows.Add(employee.F_Name, employee.L_Name, employee.EGN, employee.Position_Name);
+                }
+                dataGridView_employees.Rows[0].Selected = false;
+            }
+
+            List<String> positions = database.getPositionNames();
+            if (positions.Count > 0)
+            {
+                foreach (String position in positions)
+                {
+                    dataGridView_positions.Rows.Add(index++, position);
+                }
+                dataGridView_positions.Rows[0].Selected = false;
+            }
+        }
+
+        private void release_employrr_button_Click(object sender, EventArgs e)
+        {
+            Int32 selectedCellCount = dataGridView_employees.GetCellCount(DataGridViewElementStates.Selected);
+            if (selectedCellCount > 0)
+            {
+                if (dataGridView_employees.AreAllCellsSelected(true))
+                {
+                    DialogResult result = MessageBox.Show("Избрали сте всички служители.\nСигурни ли сте, че искате да ги премахнете?", "Предопреждение!",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                    if (result == DialogResult.Yes)
+                    {
+                        foreach (DataGridViewRow row in dataGridView_employees.Rows)
+                        {
+                            database.RemoveEmployee(row.Cells["id"].Value.ToString());
+                        }
+                    }
+                    else if (result == DialogResult.No)
+                    {
+
+                        dataGridView_employees.ClearSelection();
+                    }
+                }
+                else
+                {
+                    foreach (DataGridViewRow row in dataGridView_employees.Rows)
+                    {
+                        database.RemoveEmployee(row.Cells["id"].Value.ToString());
+                    }
+                }
+            }
+
+            dataGridViewRefresh();
+            this.ActiveControl = dataGridView_employees;
+        }
+
+        private void remove_position_button_Click(object sender, EventArgs e)
+        {
+            Int32 selectedCellCount = dataGridView_positions.GetCellCount(DataGridViewElementStates.Selected);
+            if (selectedCellCount > 0)
+            {
+                bool successful = true;
+
+                if (dataGridView_positions.AreAllCellsSelected(true))
+                {
+                    DialogResult result = MessageBox.Show("Избрали сте всички позиции.\nСигурни ли сте, че искате да ги премахнете?", "Предопреждение!",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                    if (result == DialogResult.Yes)
+                    {
+                        foreach (DataGridViewRow row in dataGridView_positions.Rows)
+                        {
+                            database.RemovePosition(row.Cells["name"].Value.ToString());
+                        }
+                    }
+                    else if (result == DialogResult.No)
+                    {
+                        dataGridView_positions.ClearSelection();
+                    }
+                }
+                else
+                {
+                    foreach (DataGridViewRow row in dataGridView_positions.Rows)
+                    {
+                        database.RemovePosition(row.Cells["name"].Value.ToString());
+                    }
+                }
+            }
+
+            dataGridViewRefresh();
+            this.ActiveControl = dataGridView_positions;
         }
     }
 }
