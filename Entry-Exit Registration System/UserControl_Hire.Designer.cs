@@ -48,12 +48,13 @@ namespace Entry_Exit_Registration_System
             this.position_name = new System.Windows.Forms.Label();
             this.position_lable = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.employee_lable = new System.Windows.Forms.Label();
             this.employee_exist = new System.Windows.Forms.Label();
-            this.timer_employee_exist = new System.Windows.Forms.Timer(this.components);
-            this.add_position_button = new GroceryShop.CustomBtn.RoundButton();
+            this.employee_lable = new System.Windows.Forms.Label();
             this.hire_button = new GroceryShop.CustomBtn.RoundButton();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.add_position_button = new GroceryShop.CustomBtn.RoundButton();
+            this.timer_exist_lable = new System.Windows.Forms.Timer(this.components);
+            this.position_exist = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -259,30 +260,6 @@ namespace Entry_Exit_Registration_System
             this.panel1.Size = new System.Drawing.Size(448, 400);
             this.panel1.TabIndex = 14;
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.SeaGreen;
-            this.panel2.Controls.Add(this.position_lable);
-            this.panel2.Controls.Add(this.textBox_position_name);
-            this.panel2.Controls.Add(this.position_name);
-            this.panel2.Controls.Add(this.add_position_button);
-            this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(452, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(448, 400);
-            this.panel2.TabIndex = 15;
-            // 
-            // employee_lable
-            // 
-            this.employee_lable.AutoSize = true;
-            this.employee_lable.Font = new System.Drawing.Font("Sylfaen", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.employee_lable.Location = new System.Drawing.Point(60, 46);
-            this.employee_lable.Name = "employee_lable";
-            this.employee_lable.Size = new System.Drawing.Size(199, 36);
-            this.employee_lable.TabIndex = 14;
-            this.employee_lable.Text = "employee_lable";
-            // 
             // employee_exist
             // 
             this.employee_exist.AutoSize = true;
@@ -294,9 +271,51 @@ namespace Entry_Exit_Registration_System
             this.employee_exist.TabIndex = 15;
             this.employee_exist.Text = "employee_exist";
             // 
-            // timer_employee_exist
+            // employee_lable
             // 
-            this.timer_employee_exist.Tick += new System.EventHandler(this.timer_employee_exist_Tick);
+            this.employee_lable.AutoSize = true;
+            this.employee_lable.Font = new System.Drawing.Font("Sylfaen", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.employee_lable.Location = new System.Drawing.Point(60, 46);
+            this.employee_lable.Name = "employee_lable";
+            this.employee_lable.Size = new System.Drawing.Size(199, 36);
+            this.employee_lable.TabIndex = 14;
+            this.employee_lable.Text = "employee_lable";
+            // 
+            // hire_button
+            // 
+            this.hire_button.BorderColor = System.Drawing.Color.Silver;
+            this.hire_button.ButtonColor = System.Drawing.Color.Cornsilk;
+            this.hire_button.FlatAppearance.BorderSize = 0;
+            this.hire_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.hire_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.hire_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.hire_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.hire_button.Location = new System.Drawing.Point(188, 350);
+            this.hire_button.Name = "hire_button";
+            this.hire_button.OnHoverBorderColor = System.Drawing.Color.Gray;
+            this.hire_button.OnHoverButtonColor = System.Drawing.Color.SeaGreen;
+            this.hire_button.OnHoverTextColor = System.Drawing.Color.Black;
+            this.hire_button.Size = new System.Drawing.Size(200, 30);
+            this.hire_button.TabIndex = 9;
+            this.hire_button.Text = "hire_button";
+            this.hire_button.TextColor = System.Drawing.Color.Black;
+            this.hire_button.UseVisualStyleBackColor = true;
+            this.hire_button.Click += new System.EventHandler(this.hire_button_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.SeaGreen;
+            this.panel2.Controls.Add(this.position_exist);
+            this.panel2.Controls.Add(this.position_lable);
+            this.panel2.Controls.Add(this.textBox_position_name);
+            this.panel2.Controls.Add(this.position_name);
+            this.panel2.Controls.Add(this.add_position_button);
+            this.panel2.Controls.Add(this.dataGridView1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(452, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(448, 400);
+            this.panel2.TabIndex = 15;
             // 
             // add_position_button
             // 
@@ -319,26 +338,20 @@ namespace Entry_Exit_Registration_System
             this.add_position_button.UseVisualStyleBackColor = true;
             this.add_position_button.Click += new System.EventHandler(this.add_position_button_Click);
             // 
-            // hire_button
+            // timer_exist_lable
             // 
-            this.hire_button.BorderColor = System.Drawing.Color.Silver;
-            this.hire_button.ButtonColor = System.Drawing.Color.Cornsilk;
-            this.hire_button.FlatAppearance.BorderSize = 0;
-            this.hire_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.hire_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.hire_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.hire_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.hire_button.Location = new System.Drawing.Point(188, 350);
-            this.hire_button.Name = "hire_button";
-            this.hire_button.OnHoverBorderColor = System.Drawing.Color.Gray;
-            this.hire_button.OnHoverButtonColor = System.Drawing.Color.SeaGreen;
-            this.hire_button.OnHoverTextColor = System.Drawing.Color.Black;
-            this.hire_button.Size = new System.Drawing.Size(200, 30);
-            this.hire_button.TabIndex = 9;
-            this.hire_button.Text = "hire_button";
-            this.hire_button.TextColor = System.Drawing.Color.Black;
-            this.hire_button.UseVisualStyleBackColor = true;
-            this.hire_button.Click += new System.EventHandler(this.hire_button_Click);
+            this.timer_exist_lable.Tick += new System.EventHandler(this.timer_exist_lable_Tick);
+            // 
+            // position_exist
+            // 
+            this.position_exist.AutoSize = true;
+            this.position_exist.Font = new System.Drawing.Font("Tahoma", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.position_exist.ForeColor = System.Drawing.Color.DarkRed;
+            this.position_exist.Location = new System.Drawing.Point(15, 290);
+            this.position_exist.Name = "position_exist";
+            this.position_exist.Size = new System.Drawing.Size(164, 30);
+            this.position_exist.TabIndex = 16;
+            this.position_exist.Text = "position_exist";
             // 
             // UserControl_Hire
             // 
@@ -381,6 +394,7 @@ namespace Entry_Exit_Registration_System
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label employee_lable;
         private System.Windows.Forms.Label employee_exist;
-        private System.Windows.Forms.Timer timer_employee_exist;
+        private System.Windows.Forms.Timer timer_exist_lable;
+        private System.Windows.Forms.Label position_exist;
     }
 }

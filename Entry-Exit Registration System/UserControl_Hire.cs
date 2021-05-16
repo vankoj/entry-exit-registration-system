@@ -65,6 +65,8 @@ namespace Entry_Exit_Registration_System
 
             position_lable.Text = "Въвеждане на позиция";
             position_name.Text = "Име на позиция";
+            position_exist.Text = "Позицията съществува";
+            position_exist.Visible = false;
             add_position_button.Text = "Въведи позиция";
 
             textBox_f_name.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, textBox_f_name.Width, textBox_f_name.Height, 30, 30));
@@ -101,16 +103,19 @@ namespace Entry_Exit_Registration_System
                 bool successful = true;
 
                 successful = database.InsertEmployee(textBox_egn.Text, textBox_f_name.Text, textBox_l_name.Text, comboBox_position.SelectedItem.ToString());
-                textBox_f_name.Clear();
-                textBox_l_name.Clear();
-                textBox_egn.Clear();
-                comboBox_position.SelectedItem = null;
-                textBox_f_name.Focus();
 
                 if (!successful)
                 {
                     employee_exist.Visible = true;
-                    timer_employee_exist.Start();
+                    timer_exist_lable.Start();
+                }
+                else
+                {
+                    textBox_f_name.Clear();
+                    textBox_l_name.Clear();
+                    textBox_egn.Clear();
+                    comboBox_position.SelectedItem = null;
+                    textBox_f_name.Focus();
                 }
             }
             else
@@ -124,10 +129,21 @@ namespace Entry_Exit_Registration_System
         {
             if (!String.IsNullOrEmpty(textBox_position_name.Text))
             {
-                database.InsertPosition(textBox_position_name.Text);
+                bool successful = true;
+
+                successful = database.InsertPosition(textBox_position_name.Text);
                 refreshPositions();
-                textBox_position_name.Clear();
-                textBox_position_name.Focus();
+
+                if (!successful)
+                {
+                    position_exist.Visible = true;
+                    timer_exist_lable.Start();
+                }
+                else
+                {
+                    textBox_position_name.Clear();
+                    textBox_position_name.Focus();
+                }
             }
             else
             {
@@ -186,14 +202,15 @@ namespace Entry_Exit_Registration_System
             if (e.KeyChar == (char)Keys.Return) add_position_button_Click(sender, e);
         }
 
-        private void timer_employee_exist_Tick(object sender, EventArgs e)
+        private void timer_exist_lable_Tick(object sender, EventArgs e)
         {
             ++counter;
 
             if (counter == 30)
             {
-                timer_employee_exist.Stop();
+                timer_exist_lable.Stop();
                 employee_exist.Visible = false;
+                position_exist.Visible = false;
                 counter = 0;
             }
         }
