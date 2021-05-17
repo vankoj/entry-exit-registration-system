@@ -197,7 +197,7 @@ namespace Entry_Exit_Registration_System
             if (char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
             {
                 e.Handled = true;
-                textBox_l_name.Focus();
+                textBox_position_name.Focus();
             }
             if (e.KeyChar == (char)Keys.Return) add_position_button_Click(sender, e);
         }
