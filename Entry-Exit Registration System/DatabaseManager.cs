@@ -290,19 +290,48 @@ namespace Entry_Exit_Registration_System
         public List<CheckInEvent> GetEmployeeCheckInsForDate(string EGN, DateTime date) // TODO - смени типа на връщаните данни (резултат от заявката) (List?)
         {
             List<CheckInEvent> result = new List<CheckInEvent>();
-            string query = "SELECT * FROM Employee";
 
-            // Добавяне на примерен запис към колекцията с резултатите
-            result.Add(new CheckInEvent("991111222222", "Петър", "Драганов", "разработчик", new DateTime(2010, 12, 1, 12, 21, 31), true));
+            string firstName, lastName, positionName;
+            bool inOffice;
+            string query = "SELECT E.EGN, E.F_Name, E.L_Name, P.Position_Name, C.Date_Time, E.In.Office" +
+              " FROM Employee E" +
+              " JOIN Position P" +
+              " ON E.Position_Id = P.Id" +
+              " JOIN CheckIn C" +
+              " ON E.EGN = C.EGN" +
+              " WHERE E.EGN = @EGN, C.Date_Time = @date";
 
-            // TODO - тяло на метода
-            // TODO - try/catch
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
 
-            //date.Day;
-            //date.Month;
-            //date.Year;
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@EGN", EGN);
+                cmd.Parameters.AddWithValue("@date", date);
 
+
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        EGN = reader.GetString(0);
+                        firstName = reader.GetString(1);
+                        lastName = reader.GetString(2);
+                        positionName = reader.GetString(3);
+                        date = reader.GetDateTime(4);
+                        inOffice = reader.GetBoolean(5);
+
+                        result.Add(new CheckInEvent(EGN, firstName, lastName, positionName, date, inOffice));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                result = null;
+            }
             return result;
+            //TODO - Ванко пробвай дали работи така, става дума за смяната на result
         }
 
         // справка за служител (за месец)
@@ -310,11 +339,47 @@ namespace Entry_Exit_Registration_System
         {
             List<CheckInEvent> result = new List<CheckInEvent>();
 
-            // TODO - тяло на метода
-            // TODO - try/catch
+            //TODO - да проверим datepicker, какво ни трябва и кое да се промени от горната заявка
 
-            //date.Month;
-            //date.Year;
+            string firstName, lastName, positionName;
+            bool inOffice;
+            string query = "SELECT E.EGN, E.F_Name, E.L_Name, P.Position_Name, C.Date_Time, E.In.Office" +
+              " FROM Employee E" +
+              " JOIN Position P" +
+              " ON E.Position_Id = P.Id" +
+              " JOIN CheckIn C" +
+              " ON E.EGN = C.EGN" +
+              " WHERE E.EGN = @EGN, C.Date_Time = @date";
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
+
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@EGN", EGN);
+                cmd.Parameters.AddWithValue("@date", date);
+
+
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        EGN = reader.GetString(0);
+                        firstName = reader.GetString(1);
+                        lastName = reader.GetString(2);
+                        positionName = reader.GetString(3);
+                        date = reader.GetDateTime(4);
+                        inOffice = reader.GetBoolean(5);
+
+                        result.Add(new CheckInEvent(EGN, firstName, lastName, positionName, date, inOffice));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                result = null;
+            }
 
             return result;
         }
