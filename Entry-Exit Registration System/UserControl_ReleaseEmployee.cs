@@ -43,12 +43,12 @@ namespace Entry_Exit_Registration_System
             this.ActiveControl = dataGridView_employees;
 
             employee_lable.Text = "Премахване на служител";
-            employee_removed.Text = "Служителят е премахнат!";
+            employee_removed.Text = "Служителят/лите е премахнат!";
             employee_removed.Visible = false;
             release_employrr_button.Text = "Премахни служител";
 
             position_lable.Text = "Премахване на позиция";
-            position_removed.Text = "Позицичта е премахната";
+            position_removed.Text = "Позицията/йте е премахната";
             position_removed.Visible = false;
             remove_position_button.Text = "Премахни позиция";
 
@@ -59,7 +59,7 @@ namespace Entry_Exit_Registration_System
         {
             ++counter;
 
-            if (counter == 30)
+            if (counter == 15)
             {
                 timer_removed_lable.Stop();
                 employee_removed.Visible = false;
@@ -96,33 +96,40 @@ namespace Entry_Exit_Registration_System
 
         private void release_employrr_button_Click(object sender, EventArgs e)
         {
-            Int32 selectedCellCount = dataGridView_employees.GetCellCount(DataGridViewElementStates.Selected);
+            Int32 selectedCellCount = dataGridView_employees.GetCellCount(DataGridViewElementStates.Selected) / 4;
             if (selectedCellCount > 0)
             {
-                if (dataGridView_employees.AreAllCellsSelected(true))
+                if (dataGridView_employees.AreAllCellsSelected(true) && selectedCellCount > 1)
                 {
                     DialogResult result = MessageBox.Show("Избрали сте всички служители.\nСигурни ли сте, че искате да ги премахнете?", "Предопреждение!",
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
                     if (result == DialogResult.Yes)
                     {
                         foreach (DataGridViewRow row in dataGridView_employees.Rows)
                         {
                             database.RemoveEmployee(row.Cells["id"].Value.ToString());
                         }
+                        employee_removed.Visible = true;
+                        timer_removed_lable.Start();
                     }
                     else if (result == DialogResult.No)
                     {
-
                         dataGridView_employees.ClearSelection();
                     }
                 }
                 else
                 {
-                    foreach (DataGridViewRow row in dataGridView_employees.Rows)
+                    foreach (DataGridViewRow row in dataGridView_employees.SelectedRows)
                     {
                         database.RemoveEmployee(row.Cells["id"].Value.ToString());
                     }
+                    employee_removed.Visible = true;
+                    timer_removed_lable.Start();
                 }
+            }
+            else
+            {
+                MessageBox.Show("Моля изберете служител/ли за премахване.", "Грешка!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             dataGridViewRefresh();
@@ -131,21 +138,21 @@ namespace Entry_Exit_Registration_System
 
         private void remove_position_button_Click(object sender, EventArgs e)
         {
-            Int32 selectedCellCount = dataGridView_positions.GetCellCount(DataGridViewElementStates.Selected);
+            Int32 selectedCellCount = dataGridView_positions.GetCellCount(DataGridViewElementStates.Selected) / 2;
             if (selectedCellCount > 0)
             {
-                bool successful = true;
-
-                if (dataGridView_positions.AreAllCellsSelected(true))
+                if (dataGridView_positions.AreAllCellsSelected(true) && selectedCellCount > 1)
                 {
                     DialogResult result = MessageBox.Show("Избрали сте всички позиции.\nСигурни ли сте, че искате да ги премахнете?", "Предопреждение!",
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
                     if (result == DialogResult.Yes)
                     {
                         foreach (DataGridViewRow row in dataGridView_positions.Rows)
                         {
                             database.RemovePosition(row.Cells["name"].Value.ToString());
                         }
+                        position_removed.Visible = true;
+                        timer_removed_lable.Start();
                     }
                     else if (result == DialogResult.No)
                     {
@@ -154,11 +161,17 @@ namespace Entry_Exit_Registration_System
                 }
                 else
                 {
-                    foreach (DataGridViewRow row in dataGridView_positions.Rows)
+                    foreach (DataGridViewRow row in dataGridView_positions.SelectedRows)
                     {
                         database.RemovePosition(row.Cells["name"].Value.ToString());
                     }
+                    position_removed.Visible = true;
+                    timer_removed_lable.Start();
                 }
+            }
+            else
+            {
+                MessageBox.Show("Моля изберете позиция/й за премахване.", "Грешка!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             dataGridViewRefresh();
