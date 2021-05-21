@@ -78,7 +78,7 @@ namespace Entry_Exit_Registration_System
             refreshPositions();
         }
 
-        private void refreshPositions()
+        public void refreshPositions()
         {
             comboBox_position.Items.Clear();
             dataGridView1.Rows.Clear();

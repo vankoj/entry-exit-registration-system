@@ -48,7 +48,7 @@ namespace Entry_Exit_Registration_System
             release_employrr_button.Text = "Премахни служител";
 
             position_lable.Text = "Премахване на позиция";
-            position_removed.Text = "Позицията/йте е премахната";
+            position_removed.Text = "Позицията/те е премахната";
             position_removed.Visible = false;
             remove_position_button.Text = "Премахни позиция";
 
@@ -68,7 +68,7 @@ namespace Entry_Exit_Registration_System
             }
         }
 
-        private void dataGridViewRefresh()
+        public void dataGridViewRefresh()
         {
             dataGridView_employees.Rows.Clear();
             dataGridView_positions.Rows.Clear();

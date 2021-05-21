@@ -40,7 +40,10 @@ namespace Entry_Exit_Registration_System
             this.panel2 = new System.Windows.Forms.Panel();
             this.position_removed = new System.Windows.Forms.Label();
             this.position_lable = new System.Windows.Forms.Label();
+            this.remove_position_button = new GroceryShop.CustomBtn.RoundButton();
             this.dataGridView_positions = new System.Windows.Forms.DataGridView();
+            this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employee_removed = new System.Windows.Forms.Label();
             this.employee_lable = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -49,9 +52,6 @@ namespace Entry_Exit_Registration_System
             this.l_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.position = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.number = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.remove_position_button = new GroceryShop.CustomBtn.RoundButton();
             this.release_employrr_button = new GroceryShop.CustomBtn.RoundButton();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_positions)).BeginInit();
@@ -81,7 +81,7 @@ namespace Entry_Exit_Registration_System
             this.position_removed.AutoSize = true;
             this.position_removed.Font = new System.Drawing.Font("Tahoma", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.position_removed.ForeColor = System.Drawing.Color.DarkRed;
-            this.position_removed.Location = new System.Drawing.Point(20, 290);
+            this.position_removed.Location = new System.Drawing.Point(10, 290);
             this.position_removed.Name = "position_removed";
             this.position_removed.Size = new System.Drawing.Size(210, 30);
             this.position_removed.TabIndex = 16;
@@ -96,6 +96,28 @@ namespace Entry_Exit_Registration_System
             this.position_lable.Size = new System.Drawing.Size(179, 36);
             this.position_lable.TabIndex = 13;
             this.position_lable.Text = "position_lable";
+            // 
+            // remove_position_button
+            // 
+            this.remove_position_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.remove_position_button.BorderColor = System.Drawing.Color.Silver;
+            this.remove_position_button.ButtonColor = System.Drawing.Color.Cornsilk;
+            this.remove_position_button.FlatAppearance.BorderSize = 0;
+            this.remove_position_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.remove_position_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.remove_position_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.remove_position_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.remove_position_button.Location = new System.Drawing.Point(122, 350);
+            this.remove_position_button.Name = "remove_position_button";
+            this.remove_position_button.OnHoverBorderColor = System.Drawing.Color.Gray;
+            this.remove_position_button.OnHoverButtonColor = System.Drawing.Color.SeaGreen;
+            this.remove_position_button.OnHoverTextColor = System.Drawing.Color.Black;
+            this.remove_position_button.Size = new System.Drawing.Size(200, 30);
+            this.remove_position_button.TabIndex = 3;
+            this.remove_position_button.Text = "remove_position_button";
+            this.remove_position_button.TextColor = System.Drawing.Color.Black;
+            this.remove_position_button.UseVisualStyleBackColor = true;
+            this.remove_position_button.Click += new System.EventHandler(this.remove_position_button_Click);
             // 
             // dataGridView_positions
             // 
@@ -149,6 +171,22 @@ namespace Entry_Exit_Registration_System
             this.dataGridView_positions.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView_positions.Size = new System.Drawing.Size(317, 150);
             this.dataGridView_positions.TabIndex = 2;
+            // 
+            // number
+            // 
+            this.number.HeaderText = "№";
+            this.number.MinimumWidth = 40;
+            this.number.Name = "number";
+            this.number.ReadOnly = true;
+            this.number.Width = 40;
+            // 
+            // name
+            // 
+            this.name.HeaderText = "Име";
+            this.name.MinimumWidth = 165;
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Width = 165;
             // 
             // employee_removed
             // 
@@ -271,44 +309,6 @@ namespace Entry_Exit_Registration_System
             this.position.Name = "position";
             this.position.ReadOnly = true;
             this.position.Width = 120;
-            // 
-            // number
-            // 
-            this.number.HeaderText = "№";
-            this.number.MinimumWidth = 40;
-            this.number.Name = "number";
-            this.number.ReadOnly = true;
-            this.number.Width = 40;
-            // 
-            // name
-            // 
-            this.name.HeaderText = "Име";
-            this.name.MinimumWidth = 165;
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Width = 165;
-            // 
-            // remove_position_button
-            // 
-            this.remove_position_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.remove_position_button.BorderColor = System.Drawing.Color.Silver;
-            this.remove_position_button.ButtonColor = System.Drawing.Color.Cornsilk;
-            this.remove_position_button.FlatAppearance.BorderSize = 0;
-            this.remove_position_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.remove_position_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.remove_position_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.remove_position_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.remove_position_button.Location = new System.Drawing.Point(122, 350);
-            this.remove_position_button.Name = "remove_position_button";
-            this.remove_position_button.OnHoverBorderColor = System.Drawing.Color.Gray;
-            this.remove_position_button.OnHoverButtonColor = System.Drawing.Color.SeaGreen;
-            this.remove_position_button.OnHoverTextColor = System.Drawing.Color.Black;
-            this.remove_position_button.Size = new System.Drawing.Size(200, 30);
-            this.remove_position_button.TabIndex = 3;
-            this.remove_position_button.Text = "remove_position_button";
-            this.remove_position_button.TextColor = System.Drawing.Color.Black;
-            this.remove_position_button.UseVisualStyleBackColor = true;
-            this.remove_position_button.Click += new System.EventHandler(this.remove_position_button_Click);
             // 
             // release_employrr_button
             // 

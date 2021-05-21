@@ -115,6 +115,8 @@ namespace Entry_Exit_Registration_System
 
         private void hire_button_Click(object sender, EventArgs e)
         {
+            UserControl_Hire.Instance.refreshPositions();
+
             windowName.Text = title + " - Добави служител / позиция";
             UserControl_Hire.Instance.BringToFront();
             UserControl_Hire.Instance.Focus();
@@ -122,6 +124,8 @@ namespace Entry_Exit_Registration_System
 
         private void release_employee_button_Click(object sender, EventArgs e)
         {
+            UserControl_ReleaseEmployee.Instance.dataGridViewRefresh();
+
             windowName.Text = title + " - Премахни служител / позиция";
             UserControl_ReleaseEmployee.Instance.BringToFront();
             UserControl_ReleaseEmployee.Instance.Focus();
