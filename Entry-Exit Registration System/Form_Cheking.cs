@@ -58,7 +58,7 @@ namespace Entry_Exit_Registration_System
             this.ActiveControl = textBox_checking;
         }
 
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        private void Form_Cheking_FormClosing(object sender, FormClosingEventArgs e)
         {
             databaseManager.Dispose();
         }
@@ -94,12 +94,12 @@ namespace Entry_Exit_Registration_System
 
         private void textBox_checking_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back || textBox_checking.Text.Length >= 10)
+            if (e.KeyChar == (char)Keys.Return) check_button_Click(sender, e);
+            else if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back || textBox_checking.Text.Length >= 10)
             {
                 e.Handled = true;
                 textBox_checking.Focus();
             }
-            else if (e.KeyChar == (char)Keys.Return) check_button_Click(sender, e);
         }
 
         private void top_lable_Click(object sender, EventArgs e)

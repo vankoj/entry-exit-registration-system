@@ -205,6 +205,7 @@ namespace Entry_Exit_Registration_System
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_Cheking";
             this.Text = "Form_Cheking";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Cheking_FormClosing);
             this.Load += new System.EventHandler(this.Form_Cheking_Load);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
