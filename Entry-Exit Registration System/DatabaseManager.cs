@@ -35,19 +35,6 @@ namespace Entry_Exit_Registration_System
                 connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"" + Path.GetFullPath(Directory.GetCurrentDirectory() + "\\..\\..\\WorkersRegistartion.mdf") + "\";Integrated Security=True";
                 connection = new SqlConnection(connectionString);
                 connection.Open();
-
-                /* // TODO - Примерна заявка. Изтрий този блок след като заявките са написани
-                string query = "SELECT * FROM Position";
-                SqlCommand cmd = new SqlCommand(query, connection);
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        MessageBox.Show("Id: " + reader.GetInt32(0) + "\nПозиция: " + reader.GetString(1));
-                    }
-                }*/
             }
             catch (Exception ex)
             {
@@ -144,19 +131,25 @@ namespace Entry_Exit_Registration_System
         public bool InsertEmployee(string EGN, string firstName, string lastName, string positionName)
         {
             bool successful = false;
-            int positionId = 1; // TODO - Id-то да се взима според positionName от таблица Position (нова заявка да се добави)
-            // TODO - добави try/catch като се добави и другата заявка
+            string innerQuery = "SELECT Id FROM Position WHERE Position_Name LIKE @positionName";
 
-            SqlCommand cmd = new SqlCommand("INSERT INTO Employee VALUES(@EGN, @firstName," +
-                                                                   "@lastName, @positionId, 'false')", connection);
+            try
+            {
+                SqlCommand cmd = new SqlCommand("INSERT INTO Employee VALUES(@EGN, @firstName, @lastName, (" +
+                                                                     innerQuery + "), 'false')", connection);
 
-            cmd.CommandType = CommandType.Text;
-            cmd.Parameters.AddWithValue("@EGN", EGN);
-            cmd.Parameters.AddWithValue("@firstName", firstName);
-            cmd.Parameters.AddWithValue("@lastName", lastName);
-            cmd.Parameters.AddWithValue("@positionId", positionId);
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@EGN", EGN);
+                cmd.Parameters.AddWithValue("@firstName", firstName);
+                cmd.Parameters.AddWithValue("@lastName", lastName);
+                cmd.Parameters.AddWithValue("@positionName", positionName);
 
-            cmd.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                successful = false;
+            }
 
             return successful;
         }
@@ -199,14 +192,13 @@ namespace Entry_Exit_Registration_System
 
         // събитие (чекиране)
         // потребител (влиза/излиза)
-        // TODO: провери формат на датата
         public bool CheckInEmployee(string EGN)
         {
             DateTime today = DateTime.Today;
             bool successful = true;
-            bool isInOfice = false;
+            bool isInOffice = false;
 
-            string query = "SELECT in_Office FROM Employee WHERE EGN LIKE @EGN";
+            string query = "SELECT In_Office FROM Employee WHERE EGN LIKE @EGN";
 
             try
             {
@@ -218,7 +210,7 @@ namespace Entry_Exit_Registration_System
                 {
                     if (reader.Read())
                     {
-                        isInOfice = reader.GetBoolean(0);
+                        isInOffice = reader.GetBoolean(0);
                     }
                     else
                     {
@@ -226,14 +218,16 @@ namespace Entry_Exit_Registration_System
                     }
                 }
 
-                cmd.CommandText = "INSERT INTO Checkln VALUES(@EGN, @TODAY, @ISINOFICE)";
+                cmd.CommandText = "INSERT INTO CheckIn VALUES(@EGN, @TODAY, @ISENTRY)";
+                cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@EGN", EGN);
                 cmd.Parameters.AddWithValue("@TODAY", today);
-                cmd.Parameters.AddWithValue("@ISINOFICE", !isInOfice);
+                cmd.Parameters.AddWithValue("@ISENTRY", !isInOffice);
                 cmd.ExecuteNonQuery();
 
-                cmd.CommandText = "UPDATE Employee SET ISINOFICE = @ISINOFICE";
-                cmd.Parameters.AddWithValue("@ISINOFICE", !isInOfice);
+                cmd.CommandText = "UPDATE Employee SET In_Office = @ISINOFFICE";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@ISINOFFICE", !isInOffice);
                 cmd.ExecuteNonQuery();
             }
             catch (Exception)
