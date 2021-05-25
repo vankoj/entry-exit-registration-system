@@ -74,7 +74,7 @@ namespace Entry_Exit_Registration_System
             dataGridView_positions.Rows.Clear();
             int index = 1;
 
-            List<CheckInEvent> employees = database.getEmployees();
+            List<CheckInEvent> employees = database.GetEmployees();
             if (employees != null && employees.Count > 0) {
                 foreach (CheckInEvent employee in employees)
                 {
@@ -83,7 +83,7 @@ namespace Entry_Exit_Registration_System
                 dataGridView_employees.Rows[0].Selected = false;
             }
 
-            List<String> positions = database.getPositionNames();
+            List<String> positions = database.GetPositionNames();
             if (positions.Count > 0)
             {
                 foreach (String position in positions)

@@ -66,7 +66,16 @@ namespace Entry_Exit_Registration_System
             return exists;
         }
 
-        public List<String> getPositionNames()
+        public bool CheckIfAdminLoginMatch(string username, string password)
+        {
+            bool matches = false;
+
+            // TODO - тяло на метода
+
+            return matches;
+        }
+
+        public List<String> GetPositionNames()
         {
             List<String> result = new List<String>();
 
@@ -92,7 +101,7 @@ namespace Entry_Exit_Registration_System
             return result;
         }
 
-        public List<CheckInEvent> getEmployees()
+        public List<CheckInEvent> GetEmployees()
         {
             List<CheckInEvent> result = new List<CheckInEvent>();
             string EGN, firstName, lastName, positionName;
@@ -231,7 +240,6 @@ namespace Entry_Exit_Registration_System
 
             return successful;
         }
-
 
         // събитие (чекиране)
         // потребител (влиза/излиза)

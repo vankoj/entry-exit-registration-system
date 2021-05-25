@@ -84,7 +84,7 @@ namespace Entry_Exit_Registration_System
             dataGridView1.Rows.Clear();
             int index = 1;
 
-            List<String> positions = database.getPositionNames();
+            List<String> positions = database.GetPositionNames();
             foreach (String position in positions)
             {
                 comboBox_position.Items.Add(position);
