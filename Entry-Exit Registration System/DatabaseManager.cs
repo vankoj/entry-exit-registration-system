@@ -130,7 +130,7 @@ namespace Entry_Exit_Registration_System
         // потребител (назначаване)
         public bool InsertEmployee(string EGN, string firstName, string lastName, string positionName)
         {
-            bool successful = false;
+            bool successful = true;
             string innerQuery = "SELECT Id FROM Position WHERE Position_Name LIKE @positionName";
 
             try
@@ -189,6 +189,49 @@ namespace Entry_Exit_Registration_System
 
             return successful;
         }
+
+        public bool UpdateEmployee(string EGN, string firstName, string lastName, string positionName)
+        {
+            bool successful = true;
+            int positionId;
+            string query = "SELECT Id FROM Position WHERE Position_Name LIKE @positionName";
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@positionName", positionName);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        positionId = reader.GetInt32(0);
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+
+                cmd.CommandText = "UPDATE Employee" +
+                                  " SET F_Name = @firstName, L_Name = @lastName, Position_Id = @positionId" +
+                                  " WHERE EGN LIKE @EGN";
+                cmd.Parameters.AddWithValue("@EGN", EGN);
+                cmd.Parameters.AddWithValue("@firstName", firstName);
+                cmd.Parameters.AddWithValue("@lastName", lastName);
+                cmd.Parameters.AddWithValue("@positionId", positionId);
+
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                successful = false;
+            }
+
+            return successful;
+        }
+
 
         // събитие (чекиране)
         // потребител (влиза/излиза)
