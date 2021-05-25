@@ -287,19 +287,19 @@ namespace Entry_Exit_Registration_System
         }
 
         // справка за служител (за ден)
-        public List<CheckInEvent> GetEmployeeCheckInsForDate(string EGN, DateTime date) // TODO - смени типа на връщаните данни (резултат от заявката) (List?)
+        public List<CheckInEvent> GetEmployeeCheckInsForDate(string EGN, DateTime date)
         {
             List<CheckInEvent> result = new List<CheckInEvent>();
 
             string firstName, lastName, positionName;
-            bool inOffice;
-            string query = "SELECT E.EGN, E.F_Name, E.L_Name, P.Position_Name, C.Date_Time, E.In.Office" +
+            bool isEntry;
+            string query = "SELECT E.EGN, E.F_Name, E.L_Name, P.Position_Name, C.Date_Time, C.Is_Entry" +
               " FROM Employee E" +
               " JOIN Position P" +
               " ON E.Position_Id = P.Id" +
               " JOIN CheckIn C" +
               " ON E.EGN = C.EGN" +
-              " WHERE E.EGN = @EGN, C.Date_Time = @date";
+              " WHERE E.EGN = @EGN AND C.Date_Time = @date";
 
             try
             {
@@ -308,8 +308,6 @@ namespace Entry_Exit_Registration_System
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@EGN", EGN);
                 cmd.Parameters.AddWithValue("@date", date);
-
-
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -320,9 +318,9 @@ namespace Entry_Exit_Registration_System
                         lastName = reader.GetString(2);
                         positionName = reader.GetString(3);
                         date = reader.GetDateTime(4);
-                        inOffice = reader.GetBoolean(5);
+                        isEntry = reader.GetBoolean(5);
 
-                        result.Add(new CheckInEvent(EGN, firstName, lastName, positionName, date, inOffice));
+                        result.Add(new CheckInEvent(EGN, firstName, lastName, positionName, date, isEntry));
                     }
                 }
             }
@@ -330,8 +328,8 @@ namespace Entry_Exit_Registration_System
             {
                 result = null;
             }
+
             return result;
-            //TODO - Ванко пробвай дали работи така, става дума за смяната на result
         }
 
         // справка за служител (за месец)
@@ -339,17 +337,17 @@ namespace Entry_Exit_Registration_System
         {
             List<CheckInEvent> result = new List<CheckInEvent>();
 
-            //TODO - да проверим datepicker, какво ни трябва и кое да се промени от горната заявка
-
             string firstName, lastName, positionName;
-            bool inOffice;
-            string query = "SELECT E.EGN, E.F_Name, E.L_Name, P.Position_Name, C.Date_Time, E.In.Office" +
+            bool isEntry;
+            string query = "SELECT E.EGN, E.F_Name, E.L_Name, P.Position_Name, C.Date_Time, C.Is_Entry" +
               " FROM Employee E" +
               " JOIN Position P" +
               " ON E.Position_Id = P.Id" +
               " JOIN CheckIn C" +
               " ON E.EGN = C.EGN" +
-              " WHERE E.EGN = @EGN, C.Date_Time = @date";
+              " WHERE E.EGN = @EGN AND" +
+              " DATEPART(yy, C.Date_Time) = @year AND" +
+              " DATEPART(mm, C.Date_Time) = @month";
 
             try
             {
@@ -357,9 +355,8 @@ namespace Entry_Exit_Registration_System
 
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@EGN", EGN);
-                cmd.Parameters.AddWithValue("@date", date);
-
-
+                cmd.Parameters.AddWithValue("@month", date.Month);
+                cmd.Parameters.AddWithValue("@year", date.Year);
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -370,9 +367,9 @@ namespace Entry_Exit_Registration_System
                         lastName = reader.GetString(2);
                         positionName = reader.GetString(3);
                         date = reader.GetDateTime(4);
-                        inOffice = reader.GetBoolean(5);
+                        isEntry = reader.GetBoolean(5);
 
-                        result.Add(new CheckInEvent(EGN, firstName, lastName, positionName, date, inOffice));
+                        result.Add(new CheckInEvent(EGN, firstName, lastName, positionName, date, isEntry));
                     }
                 }
             }
@@ -389,15 +386,47 @@ namespace Entry_Exit_Registration_System
         {
             List<CheckInEvent> result = new List<CheckInEvent>();
 
-            // TODO - тяло на метода
-            // TODO - try/catch
+            string firstName, lastName, positionName;
+            bool isEntry;
+            DateTime date;
 
-            //dateStart.Day;
-            //dateStart.Month;
-            //dateStart.Year;
-            //dateEnd.Day;
-            //dateEnd.Month;
-            //dateEnd.Year;
+            string query = "SELECT E.EGN, E.F_Name, E.L_Name, P.Position_Name, C.Date_Time, C.Is_Entry" +
+              " FROM Employee E" +
+              " JOIN Position P" +
+              " ON E.Position_Id = P.Id" +
+              " JOIN CheckIn C" +
+              " ON E.EGN = C.EGN" +
+              " WHERE E.EGN = @EGN AND" +
+              " C.Date_Time BETWEEN @dateStart AND @dateEnd";
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
+
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@EGN", EGN);
+                cmd.Parameters.AddWithValue("@dateStart", dateStart);
+                cmd.Parameters.AddWithValue("@dateEnd", dateEnd);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        EGN = reader.GetString(0);
+                        firstName = reader.GetString(1);
+                        lastName = reader.GetString(2);
+                        positionName = reader.GetString(3);
+                        date = reader.GetDateTime(4);
+                        isEntry = reader.GetBoolean(5);
+
+                        result.Add(new CheckInEvent(EGN, firstName, lastName, positionName, date, isEntry));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                result = null;
+            }
 
             return result;
         }
@@ -407,15 +436,47 @@ namespace Entry_Exit_Registration_System
         {
             List<CheckInEvent> result = new List<CheckInEvent>();
 
-            // TODO - тяло на метода
-            // TODO - try/catch
 
-            //dateStart.Day;
-            //dateStart.Month;
-            //dateStart.Year;
-            //dateEnd.Day;
-            //dateEnd.Month;
-            //dateEnd.Year;
+            string EGN, firstName, lastName, positionName;
+            bool isEntry;
+            DateTime date;
+
+            string query = "SELECT E.EGN, E.F_Name, E.L_Name, P.Position_Name, C.Date_Time, C.Is_Entry" +
+              " FROM Employee E" +
+              " JOIN Position P" +
+              " ON E.Position_Id = P.Id" +
+              " JOIN CheckIn C" +
+              " ON E.EGN = C.EGN" +
+              " WHERE C.Date_Time" +
+              " BETWEEN @dateStart AND @dateEnd";
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
+
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@dateStart", dateStart);
+                cmd.Parameters.AddWithValue("@dateEnd", dateEnd);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        EGN = reader.GetString(0);
+                        firstName = reader.GetString(1);
+                        lastName = reader.GetString(2);
+                        positionName = reader.GetString(3);
+                        date = reader.GetDateTime(4);
+                        isEntry = reader.GetBoolean(5);
+
+                        result.Add(new CheckInEvent(EGN, firstName, lastName, positionName, date, isEntry));
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                result = null;
+            }
 
             return result;
         }
