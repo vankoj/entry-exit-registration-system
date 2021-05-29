@@ -120,7 +120,7 @@ namespace Entry_Exit_Registration_System
             }
             else
             {
-                MessageBox.Show("Моля попълнете всички полета!", "Грешка");
+                MessageBox.Show("Моля попълнете всички полета!", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 textBox_f_name.Focus();
             }
         }
@@ -147,7 +147,7 @@ namespace Entry_Exit_Registration_System
             }
             else
             {
-                MessageBox.Show("Моля попълнете име на позицията!", "Грешка");
+                MessageBox.Show("Моля попълнете име на позицията!", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 textBox_position_name.Focus();
             }
         }

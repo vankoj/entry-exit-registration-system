@@ -29,9 +29,9 @@ namespace Entry_Exit_Registration_System
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView_employees = new System.Windows.Forms.DataGridView();
             this.f_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.l_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,11 +41,11 @@ namespace Entry_Exit_Registration_System
             this.textBox_l_name = new System.Windows.Forms.TextBox();
             this.textBox_egn = new System.Windows.Forms.TextBox();
             this.comboBox_position = new System.Windows.Forms.ComboBox();
-            this.update_button = new GroceryShop.CustomBtn.RoundButton();
             this.label_f_name = new System.Windows.Forms.Label();
             this.label_l_name = new System.Windows.Forms.Label();
             this.label_egn = new System.Windows.Forms.Label();
             this.label_position = new System.Windows.Forms.Label();
+            this.update_button = new GroceryShop.CustomBtn.RoundButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_employees)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,14 +57,14 @@ namespace Entry_Exit_Registration_System
             this.dataGridView_employees.AllowUserToResizeRows = false;
             this.dataGridView_employees.BackgroundColor = System.Drawing.Color.Black;
             this.dataGridView_employees.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SeaGreen;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_employees.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.SeaGreen;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_employees.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView_employees.ColumnHeadersHeight = 30;
             this.dataGridView_employees.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView_employees.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -72,35 +72,37 @@ namespace Entry_Exit_Registration_System
             this.l_name,
             this.id,
             this.position});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.SeaGreen;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView_employees.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.SeaGreen;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView_employees.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView_employees.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView_employees.EnableHeadersVisualStyles = false;
             this.dataGridView_employees.GridColor = System.Drawing.Color.White;
             this.dataGridView_employees.Location = new System.Drawing.Point(0, 90);
+            this.dataGridView_employees.MultiSelect = false;
             this.dataGridView_employees.Name = "dataGridView_employees";
             this.dataGridView_employees.ReadOnly = true;
             this.dataGridView_employees.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.MediumSpringGreen;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView_employees.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.MediumSpringGreen;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_employees.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView_employees.RowHeadersWidth = 30;
             this.dataGridView_employees.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView_employees.RowTemplate.Height = 24;
             this.dataGridView_employees.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView_employees.Size = new System.Drawing.Size(900, 300);
             this.dataGridView_employees.TabIndex = 1;
+            this.dataGridView_employees.SelectionChanged += new System.EventHandler(this.dataGridView_employees_SelectionChanged);
             // 
             // f_name
             // 
@@ -171,26 +173,6 @@ namespace Entry_Exit_Registration_System
             this.comboBox_position.Size = new System.Drawing.Size(150, 30);
             this.comboBox_position.TabIndex = 5;
             // 
-            // update_button
-            // 
-            this.update_button.BorderColor = System.Drawing.Color.Silver;
-            this.update_button.ButtonColor = System.Drawing.Color.Cornsilk;
-            this.update_button.FlatAppearance.BorderSize = 0;
-            this.update_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.update_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.update_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.update_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.update_button.Location = new System.Drawing.Point(770, 45);
-            this.update_button.Name = "update_button";
-            this.update_button.OnHoverBorderColor = System.Drawing.Color.Gray;
-            this.update_button.OnHoverButtonColor = System.Drawing.Color.SeaGreen;
-            this.update_button.OnHoverTextColor = System.Drawing.Color.Black;
-            this.update_button.Size = new System.Drawing.Size(124, 30);
-            this.update_button.TabIndex = 6;
-            this.update_button.Text = "update_button";
-            this.update_button.TextColor = System.Drawing.Color.Black;
-            this.update_button.UseVisualStyleBackColor = true;
-            // 
             // label_f_name
             // 
             this.label_f_name.AutoSize = true;
@@ -230,6 +212,27 @@ namespace Entry_Exit_Registration_System
             this.label_position.Size = new System.Drawing.Size(133, 26);
             this.label_position.TabIndex = 10;
             this.label_position.Text = "label_position";
+            // 
+            // update_button
+            // 
+            this.update_button.BorderColor = System.Drawing.Color.Silver;
+            this.update_button.ButtonColor = System.Drawing.Color.Cornsilk;
+            this.update_button.FlatAppearance.BorderSize = 0;
+            this.update_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.update_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.update_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.update_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.update_button.Location = new System.Drawing.Point(770, 45);
+            this.update_button.Name = "update_button";
+            this.update_button.OnHoverBorderColor = System.Drawing.Color.Gray;
+            this.update_button.OnHoverButtonColor = System.Drawing.Color.SeaGreen;
+            this.update_button.OnHoverTextColor = System.Drawing.Color.Black;
+            this.update_button.Size = new System.Drawing.Size(124, 30);
+            this.update_button.TabIndex = 6;
+            this.update_button.Text = "update_button";
+            this.update_button.TextColor = System.Drawing.Color.Black;
+            this.update_button.UseVisualStyleBackColor = true;
+            this.update_button.Click += new System.EventHandler(this.update_button_Click);
             // 
             // UserControl_UpdateEmployee
             // 

@@ -133,6 +133,8 @@ namespace Entry_Exit_Registration_System
 
         private void update_employee_button_Click(object sender, EventArgs e)
         {
+            UserControl_UpdateEmployee.Instance.dataGridViewRefresh();
+
             windowName.Text = title + " - Служители";
             UserControl_UpdateEmployee.Instance.BringToFront();
             UserControl_UpdateEmployee.Instance.Focus();
