@@ -53,8 +53,25 @@ namespace Entry_Exit_Registration_System
         {
             bool exists = false;
 
-            string query = "SELECT * FROM Employee\n" +
-                            "WHERE EGN LIKE '" + employeeEGN + "'";
+            string query = "SELECT * FROM Employee" +
+                           " WHERE EGN LIKE '" + employeeEGN + "'";
+
+            SqlCommand cmd = new SqlCommand(query, connection);
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                exists = reader.Read();
+            }
+
+            return exists;
+        }
+
+        public bool CheckIfAdminExists(string adminId)
+        {
+            bool exists = false;
+
+            string query = "SELECT * FROM Admin" +
+                            " WHERE Id LIKE '" + adminId + "'";
 
             SqlCommand cmd = new SqlCommand(query, connection);
 
