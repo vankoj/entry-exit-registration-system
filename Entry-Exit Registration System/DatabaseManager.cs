@@ -70,7 +70,27 @@ namespace Entry_Exit_Registration_System
         {
             bool matches = false;
 
-            // TODO - тяло на метода
+            string query = "SELECT * FROM Admin" +
+                " WHERE User_Name LIKE @username" +
+                " AND Password LIKE @password";
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
+
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@username", username);
+                cmd.Parameters.AddWithValue("@password", password);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    matches = reader.Read();
+                }
+            }
+            catch (Exception)
+            {
+                matches = false;
+            }
 
             return matches;
         }
