@@ -31,7 +31,6 @@ namespace Entry_Exit_Registration_System
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_AdminLogin));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.login_button = new GroceryShop.CustomBtn.RoundButton();
             this.username_lable = new System.Windows.Forms.Label();
             this.passowrd_label = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -44,6 +43,7 @@ namespace Entry_Exit_Registration_System
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.windowName = new System.Windows.Forms.Label();
             this.closeButton = new System.Windows.Forms.PictureBox();
+            this.login_button = new GroceryShop.CustomBtn.RoundButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
@@ -57,42 +57,22 @@ namespace Entry_Exit_Registration_System
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Entry_Exit_Registration_System.Properties.Resources.user;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 63);
+            this.pictureBox1.Location = new System.Drawing.Point(9, 51);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(50, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
-            // login_button
-            // 
-            this.login_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.login_button.BorderColor = System.Drawing.Color.Silver;
-            this.login_button.ButtonColor = System.Drawing.Color.Cornsilk;
-            this.login_button.FlatAppearance.BorderSize = 0;
-            this.login_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.login_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
-            this.login_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.login_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.login_button.Location = new System.Drawing.Point(326, 210);
-            this.login_button.Name = "login_button";
-            this.login_button.OnHoverBorderColor = System.Drawing.Color.Gray;
-            this.login_button.OnHoverButtonColor = System.Drawing.Color.SeaGreen;
-            this.login_button.OnHoverTextColor = System.Drawing.Color.Black;
-            this.login_button.Size = new System.Drawing.Size(85, 34);
-            this.login_button.TabIndex = 3;
-            this.login_button.Text = "login";
-            this.login_button.TextColor = System.Drawing.Color.Black;
-            this.login_button.UseVisualStyleBackColor = true;
-            this.login_button.Click += new System.EventHandler(this.login_button_Click);
-            // 
             // username_lable
             // 
             this.username_lable.AutoSize = true;
             this.username_lable.Font = new System.Drawing.Font("Sylfaen", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.username_lable.Location = new System.Drawing.Point(99, 50);
+            this.username_lable.Location = new System.Drawing.Point(74, 41);
+            this.username_lable.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.username_lable.Name = "username_lable";
-            this.username_lable.Size = new System.Drawing.Size(149, 26);
+            this.username_lable.Size = new System.Drawing.Size(112, 22);
             this.username_lable.TabIndex = 7;
             this.username_lable.Text = "username_lable";
             // 
@@ -100,16 +80,18 @@ namespace Entry_Exit_Registration_System
             // 
             this.passowrd_label.AutoSize = true;
             this.passowrd_label.Font = new System.Drawing.Font("Sylfaen", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.passowrd_label.Location = new System.Drawing.Point(99, 141);
+            this.passowrd_label.Location = new System.Drawing.Point(74, 115);
+            this.passowrd_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.passowrd_label.Name = "passowrd_label";
-            this.passowrd_label.Size = new System.Drawing.Size(143, 26);
+            this.passowrd_label.Size = new System.Drawing.Size(111, 22);
             this.passowrd_label.TabIndex = 8;
             this.passowrd_label.Text = "passowrd_label";
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Entry_Exit_Registration_System.Properties.Resources.padlock;
-            this.pictureBox2.Location = new System.Drawing.Point(12, 154);
+            this.pictureBox2.Location = new System.Drawing.Point(9, 125);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(50, 50);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -120,9 +102,10 @@ namespace Entry_Exit_Registration_System
             // 
             this.textBox_username.BackColor = System.Drawing.Color.Cornsilk;
             this.textBox_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_username.Location = new System.Drawing.Point(100, 79);
+            this.textBox_username.Location = new System.Drawing.Point(75, 64);
+            this.textBox_username.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox_username.Name = "textBox_username";
-            this.textBox_username.Size = new System.Drawing.Size(186, 34);
+            this.textBox_username.Size = new System.Drawing.Size(140, 28);
             this.textBox_username.TabIndex = 10;
             this.textBox_username.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_username_KeyPress);
             // 
@@ -130,10 +113,12 @@ namespace Entry_Exit_Registration_System
             // 
             this.textBox_password.BackColor = System.Drawing.Color.Cornsilk;
             this.textBox_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_password.Location = new System.Drawing.Point(100, 170);
+            this.textBox_password.Location = new System.Drawing.Point(75, 138);
+            this.textBox_password.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox_password.Name = "textBox_password";
-            this.textBox_password.Size = new System.Drawing.Size(186, 34);
+            this.textBox_password.Size = new System.Drawing.Size(140, 28);
             this.textBox_password.TabIndex = 11;
+            this.textBox_password.UseSystemPasswordChar = true;
             this.textBox_password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_password_KeyPress);
             // 
             // panel2
@@ -166,8 +151,9 @@ namespace Entry_Exit_Registration_System
             this.panel1.Controls.Add(this.closeButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(423, 40);
+            this.panel1.Size = new System.Drawing.Size(317, 32);
             this.panel1.TabIndex = 12;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
@@ -176,9 +162,10 @@ namespace Entry_Exit_Registration_System
             this.minimizeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.minimizeButton.BackColor = System.Drawing.Color.Transparent;
             this.minimizeButton.Image = global::Entry_Exit_Registration_System.Properties.Resources.minimize;
-            this.minimizeButton.Location = new System.Drawing.Point(350, 4);
+            this.minimizeButton.Location = new System.Drawing.Point(262, 3);
+            this.minimizeButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.minimizeButton.Name = "minimizeButton";
-            this.minimizeButton.Size = new System.Drawing.Size(32, 32);
+            this.minimizeButton.Size = new System.Drawing.Size(24, 26);
             this.minimizeButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.minimizeButton.TabIndex = 7;
             this.minimizeButton.TabStop = false;
@@ -188,9 +175,10 @@ namespace Entry_Exit_Registration_System
             // 
             this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox3.Image = global::Entry_Exit_Registration_System.Properties.Resources.id_card;
-            this.pictureBox3.Location = new System.Drawing.Point(3, 4);
+            this.pictureBox3.Location = new System.Drawing.Point(2, 3);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox3.Size = new System.Drawing.Size(24, 26);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 6;
             this.pictureBox3.TabStop = false;
@@ -200,9 +188,10 @@ namespace Entry_Exit_Registration_System
             // 
             this.windowName.AutoSize = true;
             this.windowName.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.windowName.Location = new System.Drawing.Point(41, 7);
+            this.windowName.Location = new System.Drawing.Point(31, 6);
+            this.windowName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.windowName.Name = "windowName";
-            this.windowName.Size = new System.Drawing.Size(161, 29);
+            this.windowName.Size = new System.Drawing.Size(126, 24);
             this.windowName.TabIndex = 5;
             this.windowName.Text = "windowName";
             this.windowName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
@@ -212,20 +201,44 @@ namespace Entry_Exit_Registration_System
             this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.closeButton.BackColor = System.Drawing.Color.Transparent;
             this.closeButton.Image = global::Entry_Exit_Registration_System.Properties.Resources.close;
-            this.closeButton.Location = new System.Drawing.Point(388, 4);
+            this.closeButton.Location = new System.Drawing.Point(291, 3);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.closeButton.Name = "closeButton";
-            this.closeButton.Size = new System.Drawing.Size(32, 32);
+            this.closeButton.Size = new System.Drawing.Size(24, 26);
             this.closeButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.closeButton.TabIndex = 3;
             this.closeButton.TabStop = false;
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
+            // login_button
+            // 
+            this.login_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.login_button.BorderColor = System.Drawing.Color.Silver;
+            this.login_button.ButtonColor = System.Drawing.Color.Cornsilk;
+            this.login_button.FlatAppearance.BorderSize = 0;
+            this.login_button.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.login_button.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.login_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.login_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.login_button.Location = new System.Drawing.Point(244, 171);
+            this.login_button.Margin = new System.Windows.Forms.Padding(2);
+            this.login_button.Name = "login_button";
+            this.login_button.OnHoverBorderColor = System.Drawing.Color.Gray;
+            this.login_button.OnHoverButtonColor = System.Drawing.Color.SeaGreen;
+            this.login_button.OnHoverTextColor = System.Drawing.Color.Black;
+            this.login_button.Size = new System.Drawing.Size(64, 28);
+            this.login_button.TabIndex = 3;
+            this.login_button.Text = "login";
+            this.login_button.TextColor = System.Drawing.Color.Black;
+            this.login_button.UseVisualStyleBackColor = true;
+            this.login_button.Click += new System.EventHandler(this.login_button_Click);
+            // 
             // Form_AdminLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SeaGreen;
-            this.ClientSize = new System.Drawing.Size(423, 256);
+            this.ClientSize = new System.Drawing.Size(317, 208);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.textBox_password);
             this.Controls.Add(this.textBox_username);
@@ -236,6 +249,7 @@ namespace Entry_Exit_Registration_System
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Form_AdminLogin";
             this.Text = "Form_AdminLogin";
             this.Load += new System.EventHandler(this.Form_AdminLogin_Load);
