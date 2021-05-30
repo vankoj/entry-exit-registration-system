@@ -13,6 +13,7 @@ namespace Entry_Exit_Registration_System
 {
     public partial class Form_AdminLogin : Form
     {
+        private DatabaseManager databaseManager;
         // Round Controls
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -38,6 +39,8 @@ namespace Entry_Exit_Registration_System
             InitializeComponent();
             this.Text = "Вход на администратор";
             this.MaximizeBox = false;
+
+            databaseManager = DatabaseManager.Instance;
         }
 
         private void Form_AdminLogin_Load(object sender, EventArgs e)
@@ -57,12 +60,28 @@ namespace Entry_Exit_Registration_System
 
         private void login_button_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            string username = textBox_username.Text;
+            string password = textBox_password.Text;
 
-            Form_AdminPanel form = new Form_AdminPanel();
-            form.ShowDialog();
+            if (String.IsNullOrEmpty(username) || String.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Моля въведете всички полета", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-            this.Close();
+            if (databaseManager.CheckIfAdminLoginMatch(username, password))
+            {
+                this.Hide();
+
+                Form_AdminPanel form = new Form_AdminPanel();
+                form.ShowDialog();
+
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Грешно име или парола", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void closeButton_Click(object sender, EventArgs e)
