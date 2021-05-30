@@ -65,9 +65,8 @@ namespace Entry_Exit_Registration_System
 
         private void check_button_Click(object sender, EventArgs e)
         {
-            if (textBox_checking.Text == "666")
+            if (databaseManager.CheckIfAdminExists(textBox_checking.Text))
             {
-                // Временно зареждане на Администраторската форма
                 this.Hide();
 
                 Form_AdminLogin form = new Form_AdminLogin();
@@ -78,16 +77,18 @@ namespace Entry_Exit_Registration_System
                 textBox_checking.Text = "";
                 this.ActiveControl = textBox_checking;
             }
-            else if (!string.IsNullOrEmpty(textBox_checking.Text))
+            else if (string.IsNullOrEmpty(textBox_checking.Text))
             {
-                MessageBox.Show(textBox_checking.Text, "Чекиране", MessageBoxButtons.OK, MessageBoxIcon.Question);
-
-                textBox_checking.Text = "";
+                MessageBox.Show("Моля въведете потребителски номер", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.ActiveControl = textBox_checking;
             }
             else
             {
-                MessageBox.Show("Моля въведете потребителски номер", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // TODO - да се чекира служителя и да се смени MessageBox-а
+                // TODO - проверка дали такъв служител съществува (и MessageBox, ако няма такъв)
+                MessageBox.Show(textBox_checking.Text, "Чекиране", MessageBoxButtons.OK, MessageBoxIcon.Question);
+
+                textBox_checking.Text = "";
                 this.ActiveControl = textBox_checking;
             }
         }
