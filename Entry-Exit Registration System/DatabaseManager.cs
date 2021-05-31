@@ -297,8 +297,9 @@ namespace Entry_Exit_Registration_System
                 cmd.Parameters.AddWithValue("@ISENTRY", !isInOffice);
                 cmd.ExecuteNonQuery();
 
-                cmd.CommandText = "UPDATE Employee SET In_Office = @ISINOFFICE"; // TODO - Това ще промени на всички служители статуса "в офиса"
+                cmd.CommandText = "UPDATE Employee SET In_Office = @ISINOFFICE WHERE EGN LIKE @EGN";
                 cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@EGN", EGN);
                 cmd.Parameters.AddWithValue("@ISINOFFICE", !isInOffice);
                 cmd.ExecuteNonQuery();
             }
