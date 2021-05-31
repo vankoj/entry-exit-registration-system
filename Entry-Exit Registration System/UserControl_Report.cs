@@ -62,6 +62,7 @@ namespace Entry_Exit_Registration_System
             comboBox1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, comboBox1.Width, comboBox1.Height, 30, 30));
             dateTimePicker1.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, dateTimePicker1.Width, dateTimePicker1.Height, 30, 30));
             dateTimePicker2.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, dateTimePicker2.Width, dateTimePicker2.Height, 30, 30));
+            dateTimePicker1.Value = dateTimePicker2.Value = DateTime.Now;
 
             comboBox1.SelectedIndex = 0;
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -132,7 +133,7 @@ namespace Entry_Exit_Registration_System
                                 else
                                 {
                                     TimeSpan duration = today.Subtract(item.Date_Time);
-                                    dataGridView1.Rows.Add(item.F_Name, item.L_Name, item.EGN, item.EGN, duration.ToString(@"h\:m\:s"));
+                                    dataGridView1.Rows.Add(item.F_Name, item.L_Name, item.EGN, item.Position_Name, duration.ToString(@"h\:m\:s"));
                                 }
                             }
                         }
@@ -159,12 +160,12 @@ namespace Entry_Exit_Registration_System
                             {
                                 if (item.Is_Entry)
                                 {
-                                    dataGridView1.Rows.Add(item.F_Name, item.L_Name, item.EGN, item.EGN, "На работа");
+                                    dataGridView1.Rows.Add(item.F_Name, item.L_Name, item.EGN, item.Position_Name, "На работа");
                                 }
                                 else
                                 {
                                     TimeSpan duration = today.Subtract(item.Date_Time);
-                                    dataGridView1.Rows.Add(item.F_Name, item.L_Name, item.EGN, item.EGN, duration.ToString(@"h\:m\:s"));
+                                    dataGridView1.Rows.Add(item.F_Name, item.L_Name, item.EGN, item.Position_Name, duration.ToString(@"h\:m\:s"));
                                 }
                             }
                         }
@@ -191,12 +192,12 @@ namespace Entry_Exit_Registration_System
                             {
                                 if (item.Is_Entry)
                                 {
-                                    dataGridView1.Rows.Add(item.F_Name, item.L_Name, item.EGN, item.EGN, "На работа");
+                                    dataGridView1.Rows.Add(item.F_Name, item.L_Name, item.EGN, item.Position_Name, "На работа");
                                 }
                                 else
                                 {
                                     TimeSpan duration = today.Subtract(item.Date_Time);
-                                    dataGridView1.Rows.Add(item.F_Name, item.L_Name, item.EGN, item.EGN, duration.ToString(@"h\:m\:s"));
+                                    dataGridView1.Rows.Add(item.F_Name, item.L_Name, item.EGN, item.Position_Name, duration.ToString(@"h\:m\:s"));
                                 }
                             }
                         }
@@ -221,12 +222,12 @@ namespace Entry_Exit_Registration_System
                         {
                             if (item.Is_Entry)
                             {
-                                dataGridView1.Rows.Add(item.F_Name, item.L_Name, item.EGN, item.EGN, "На работа");
+                                dataGridView1.Rows.Add(item.F_Name, item.L_Name, item.EGN, item.Position_Name, "На работа");
                             }
                             else
                             {
                                 TimeSpan duration = today.Subtract(item.Date_Time);
-                                dataGridView1.Rows.Add(item.F_Name, item.L_Name, item.EGN, item.EGN, duration.ToString(@"h\:m\:s"));
+                                dataGridView1.Rows.Add(item.F_Name, item.L_Name, item.EGN, item.Position_Name, duration.ToString(@"h\:m\:s"));
                             }
                         }
                     }
