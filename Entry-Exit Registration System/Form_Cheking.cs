@@ -84,9 +84,23 @@ namespace Entry_Exit_Registration_System
             }
             else
             {
-                // TODO - да се чекира служителя и да се смени MessageBox-а
-                // TODO - проверка дали такъв служител съществува (и MessageBox, ако няма такъв)
-                MessageBox.Show(textBox_checking.Text, "Чекиране", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                if (databaseManager.CheckIfEmployeeExists(textBox_checking.Text))
+                {
+                    if (databaseManager.CheckInEmployee(textBox_checking.Text))
+                    {
+                        string greeting = "Добре дошли"; // TODO - "Довиждане" // TODO - нов метод? - databaseManager.IsEmployeeInOffice(textBox_checking.Text);
+                        // TODO - може би да се изписва името на служителя - нов метод? - databaseManager.GetEmployeeNames(textBox_checking.Text);
+                        MessageBox.Show("Успешно чекиране", greeting, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Моля свържете се с администратор!", "Грешка при чекиране", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Не съществува потребител с такъв номер", "Грешка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
                 textBox_checking.Text = "";
                 this.ActiveControl = textBox_checking;
