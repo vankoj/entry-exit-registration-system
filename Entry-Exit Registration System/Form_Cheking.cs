@@ -88,9 +88,9 @@ namespace Entry_Exit_Registration_System
                 {
                     if (databaseManager.CheckInEmployee(textBox_checking.Text))
                     {
-                        string greeting = "Добре дошли"; // TODO - "Довиждане" // TODO - нов метод? - databaseManager.IsEmployeeInOffice(textBox_checking.Text);
-                        // TODO - може би да се изписва името на служителя - нов метод? - databaseManager.GetEmployeeNames(textBox_checking.Text);
-                        MessageBox.Show("Успешно чекиране", greeting, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        string greeting = databaseManager.IsEmployeeInOffice(textBox_checking.Text) ? "Добре дошли" : "Довиждане";
+                        MessageBox.Show(greeting + ", " + databaseManager.GetEmployeeNames(textBox_checking.Text) + "!",
+                            "Успешно чекиране", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {

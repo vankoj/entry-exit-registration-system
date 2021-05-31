@@ -312,7 +312,7 @@ namespace Entry_Exit_Registration_System
 
         public bool IsEmployeeInOffice(string EGN)
         {
-            bool isInOffice;
+            bool isInOffice = false;
 
             string query = "SELECT In_Office FROM Employee WHERE EGN LIKE @EGN";
 
@@ -326,11 +326,7 @@ namespace Entry_Exit_Registration_System
                 {
                     if (reader.Read())
                     {
-                        isInOffice = reader.GetBoolean(4);
-                    }
-                    else
-                    {
-                        return false;
+                        isInOffice = reader.GetBoolean(0);
                     }
                 }
             }
@@ -340,6 +336,33 @@ namespace Entry_Exit_Registration_System
             }
 
             return isInOffice;
+        }
+
+        public string GetEmployeeNames(string EGN)
+        {
+            string names = null;
+            string query = "SELECT F_Name, L_Name FROM Employee WHERE EGN LIKE @EGN";
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@EGN", EGN);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        names = reader.GetString(0) + " " + reader.GetString(1);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                names = null;
+            }
+
+            return names;
         }
 
         // потребител (уволнен)
