@@ -284,30 +284,14 @@ namespace Entry_Exit_Registration_System
         {
             DateTime today = DateTime.Today;
             bool successful = true;
-            bool isInOffice = false;
+            bool isInOffice = IsEmployeeInOffice(EGN);
 
-            string query = "SELECT In_Office FROM Employee WHERE EGN LIKE @EGN";
+            string query = "INSERT INTO CheckIn VALUES(@EGN, @TODAY, @ISENTRY)";
 
             try
             {
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.CommandType = CommandType.Text;
-                cmd.Parameters.AddWithValue("@EGN", EGN);
-
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        isInOffice = reader.GetBoolean(0);
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
-
-                cmd.CommandText = "INSERT INTO CheckIn VALUES(@EGN, @TODAY, @ISENTRY)";
-                cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@EGN", EGN);
                 cmd.Parameters.AddWithValue("@TODAY", today);
                 cmd.Parameters.AddWithValue("@ISENTRY", !isInOffice);
@@ -324,6 +308,38 @@ namespace Entry_Exit_Registration_System
             }
 
             return successful;
+        }
+
+        public bool IsEmployeeInOffice(string EGN)
+        {
+            bool isInOffice;
+
+            string query = "SELECT In_Office FROM Employee WHERE EGN LIKE @EGN";
+
+            try
+            {
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@EGN", EGN);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        isInOffice = reader.GetBoolean(4);
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                isInOffice = false;
+            }
+
+            return isInOffice;
         }
 
         // потребител (уволнен)
