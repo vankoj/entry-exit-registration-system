@@ -313,7 +313,7 @@ namespace Entry_Exit_Registration_System
                 cmd.Parameters.AddWithValue("@ISENTRY", !isInOffice);
                 cmd.ExecuteNonQuery();
 
-                cmd.CommandText = "UPDATE Employee SET In_Office = @ISINOFFICE";
+                cmd.CommandText = "UPDATE Employee SET In_Office = @ISINOFFICE"; // TODO - Това ще промени на всички служители статуса "в офиса"
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@ISINOFFICE", !isInOffice);
                 cmd.ExecuteNonQuery();
@@ -381,7 +381,10 @@ namespace Entry_Exit_Registration_System
               " ON E.Position_Id = P.Id" +
               " JOIN CheckIn C" +
               " ON E.EGN = C.EGN" +
-              " WHERE E.EGN = @EGN AND C.Date_Time = @date";
+              " WHERE E.EGN = @EGN AND" +
+              " DATEPART(yy, C.Date_Time) = @year AND" +
+              " DATEPART(mm, C.Date_Time) = @month AND" +
+              " DATEPART(dd, C.Date_Time) = @day";
 
             try
             {
@@ -389,7 +392,9 @@ namespace Entry_Exit_Registration_System
 
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@EGN", EGN);
-                cmd.Parameters.AddWithValue("@date", date);
+                cmd.Parameters.AddWithValue("@day", date.Day);
+                cmd.Parameters.AddWithValue("@month", date.Month);
+                cmd.Parameters.AddWithValue("@year", date.Year);
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
