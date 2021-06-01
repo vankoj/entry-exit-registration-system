@@ -424,7 +424,8 @@ namespace Entry_Exit_Registration_System
               " WHERE E.EGN = @EGN AND" +
               " DATEPART(yy, C.Date_Time) = @year AND" +
               " DATEPART(mm, C.Date_Time) = @month AND" +
-              " DATEPART(dd, C.Date_Time) = @day";
+              " DATEPART(dd, C.Date_Time) = @day" +
+              " ORDER BY C.Date_Time DESC";
 
             try
             {
@@ -474,7 +475,8 @@ namespace Entry_Exit_Registration_System
               " ON E.EGN = C.EGN" +
               " WHERE E.EGN = @EGN AND" +
               " DATEPART(yy, C.Date_Time) = @year AND" +
-              " DATEPART(mm, C.Date_Time) = @month";
+              " DATEPART(mm, C.Date_Time) = @month" +
+              " ORDER BY C.Date_Time DESC";
 
             try
             {
@@ -524,7 +526,8 @@ namespace Entry_Exit_Registration_System
               " JOIN CheckIn C" +
               " ON E.EGN = C.EGN" +
               " WHERE E.EGN = @EGN AND" +
-              " C.Date_Time BETWEEN @dateStart AND @dateEnd";
+              " C.Date_Time BETWEEN @dateStart AND @dateEnd" +
+              " ORDER BY C.Date_Time DESC";
 
             try
             {
@@ -575,7 +578,8 @@ namespace Entry_Exit_Registration_System
               " JOIN CheckIn C" +
               " ON E.EGN = C.EGN" +
               " WHERE C.Date_Time" +
-              " BETWEEN @dateStart AND @dateEnd";
+              " BETWEEN @dateStart AND @dateEnd" +
+              " ORDER BY C.Date_Time DESC";
 
             try
             {
