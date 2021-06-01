@@ -91,6 +91,7 @@ namespace Entry_Exit_Registration_System
                     dateTimePicker1.Format = DateTimePickerFormat.Long;
                     dateTimePicker2.Format = DateTimePickerFormat.Long;
                     dateTimePicker2.Visible = true;
+                    dateTimePicker2.Value = DateTime.Now.AddDays(1);
                     dateTimePicker1.Location = new Point(dateTimePicker1.Location.X, 15);
                     textBox_egn.Enabled = true;
                     break;
@@ -98,6 +99,7 @@ namespace Entry_Exit_Registration_System
                     dateTimePicker1.Format = DateTimePickerFormat.Long;
                     dateTimePicker2.Format = DateTimePickerFormat.Long;
                     dateTimePicker2.Visible = true;
+                    dateTimePicker2.Value = DateTime.Now.AddDays(1);
                     dateTimePicker1.Location = new Point(dateTimePicker1.Location.X, 15);
                     textBox_egn.Enabled = false;
                     break;
@@ -109,132 +111,44 @@ namespace Entry_Exit_Registration_System
         private void check_button_Click(object sender, EventArgs e)
         {
             dataGridView1.Rows.Clear();
-            DateTime today = DateTime.Now;
+            List<CheckInEvent> items = new List<CheckInEvent>();
 
-            switch (comboBox1.SelectedIndex)
+            if (textBox_egn.Text.Length == 10)
             {
-                case 0:
-                    if (textBox_egn.Text.Length == 10)
+                switch (comboBox1.SelectedIndex)
+                {
+                    case 0:
+                        items = database.GetEmployeeCheckInsForDate(textBox_egn.Text, dateTimePicker1.Value);
+                        break;
+                    case 1:
+                        items = database.GetEmployeeCheckInsForMonth(textBox_egn.Text, dateTimePicker1.Value);
+                        break;
+                    case 2:
+                        items = database.GetEmployeeCheckInsForPeriod(textBox_egn.Text, dateTimePicker1.Value, dateTimePicker2.Value);
+                        break;
+                    case 3:
+                        items = database.GetEmployeesForPeriod(dateTimePicker1.Value, dateTimePicker2.Value);
+                        break;
+                }
+
+                if (items.Count <= 0)
+                {
+                    MessageBox.Show("Не съществуват такива записи", "Грешка", MessageBoxButtons.OK);
+                    textBox_egn.Focus();
+                }
+                else
+                {
+                    foreach (CheckInEvent item in items)
                     {
-                        List<CheckInEvent> day = database.GetEmployeeCheckInsForDate(textBox_egn.Text, dateTimePicker1.Value);
-                        if (day.Count <= 0)
-                        {
-                            MessageBox.Show("Не съществуват такива записи", "Грешка", MessageBoxButtons.OK);
-                            textBox_egn.Focus();
-                        }
-                        else
-                        {
-                            foreach (CheckInEvent item in day)
-                            {
-                                if (item.Is_Entry)
-                                {
-                                    dataGridView1.Rows.Add(item.F_Name, item.L_Name, item.EGN, item.Position_Name, "На работа");
-                                }
-                                else
-                                {
-                                    TimeSpan duration = today.Subtract(item.Date_Time);
-                                    dataGridView1.Rows.Add(item.F_Name, item.L_Name, item.EGN, item.Position_Name, duration.ToString(@"h\:m\:s"));
-                                }
-                            }
-                        }
-                        day.Clear();
+                        dataGridView1.Rows.Add(item.F_Name, item.L_Name, item.EGN, item.Position_Name, item.Date_Time, item.Is_Entry ? "Влиза" : "Излиза");
                     }
-                    else
-                    {
-                        MessageBox.Show("Моля въведете валидно ЕГН", "Грешка", MessageBoxButtons.OK);
-                        textBox_egn.Focus();
-                    }
-                    break;
-                case 1:
-                    if (textBox_egn.Text.Length == 10)
-                    {
-                        List<CheckInEvent> month = database.GetEmployeeCheckInsForMonth(textBox_egn.Text, dateTimePicker1.Value);
-                        if (month.Count <= 0)
-                        {
-                            MessageBox.Show("Не съществуват такива записи", "Грешка", MessageBoxButtons.OK);
-                            textBox_egn.Focus();
-                        }
-                        else
-                        {
-                            foreach (CheckInEvent item in month)
-                            {
-                                if (item.Is_Entry)
-                                {
-                                    dataGridView1.Rows.Add(item.F_Name, item.L_Name, item.EGN, item.Position_Name, "На работа");
-                                }
-                                else
-                                {
-                                    TimeSpan duration = today.Subtract(item.Date_Time);
-                                    dataGridView1.Rows.Add(item.F_Name, item.L_Name, item.EGN, item.Position_Name, duration.ToString(@"h\:m\:s"));
-                                }
-                            }
-                        }
-                        month.Clear();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Моля въведете валидно ЕГН", "Грешка", MessageBoxButtons.OK);
-                        textBox_egn.Focus();
-                    }
-                    break;
-                case 2:
-                    if (textBox_egn.Text.Length == 10)
-                    {
-                        List<CheckInEvent> period = database.GetEmployeeCheckInsForPeriod(textBox_egn.Text, dateTimePicker1.Value, dateTimePicker2.Value);
-                        if (period.Count <= 0)
-                        {
-                            MessageBox.Show("Не съществуват такива записи", "Грешка", MessageBoxButtons.OK);
-                            textBox_egn.Focus();
-                        }
-                        else
-                        {
-                            foreach (CheckInEvent item in period)
-                            {
-                                if (item.Is_Entry)
-                                {
-                                    dataGridView1.Rows.Add(item.F_Name, item.L_Name, item.EGN, item.Position_Name, "На работа");
-                                }
-                                else
-                                {
-                                    TimeSpan duration = today.Subtract(item.Date_Time);
-                                    dataGridView1.Rows.Add(item.F_Name, item.L_Name, item.EGN, item.Position_Name, duration.ToString(@"h\:m\:s"));
-                                }
-                            }
-                        }
-                        period.Clear();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Моля въведете валидно ЕГН", "Грешка", MessageBoxButtons.OK);
-                        textBox_egn.Focus();
-                    }
-                    break;
-                case 3:
-                    List<CheckInEvent> periodAll = database.GetEmployeesForPeriod(dateTimePicker1.Value, dateTimePicker2.Value);
-                    if (periodAll.Count <= 0)
-                    {
-                        MessageBox.Show("Не съществуват такива записи", "Грешка", MessageBoxButtons.OK);
-                        textBox_egn.Focus();
-                    }
-                    else
-                    {
-                        foreach (CheckInEvent item in periodAll)
-                        {
-                            if (item.Is_Entry)
-                            {
-                                dataGridView1.Rows.Add(item.F_Name, item.L_Name, item.EGN, item.Position_Name, "На работа");
-                            }
-                            else
-                            {
-                                TimeSpan duration = today.Subtract(item.Date_Time);
-                                dataGridView1.Rows.Add(item.F_Name, item.L_Name, item.EGN, item.Position_Name, duration.ToString(@"h\:m\:s"));
-                            }
-                        }
-                    }
-                    periodAll.Clear();
-                    break;
-                default:
-                    break;
+                }
+                items.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Моля въведете валидно ЕГН", "Грешка", MessageBoxButtons.OK);
+                textBox_egn.Focus();
             }
         }
 
