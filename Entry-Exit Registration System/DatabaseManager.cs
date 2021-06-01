@@ -282,7 +282,7 @@ namespace Entry_Exit_Registration_System
         // потребител (влиза/излиза)
         public bool CheckInEmployee(string EGN)
         {
-            DateTime today = DateTime.Today;
+            DateTime today = DateTime.Now;
             bool successful = true;
             bool isInOffice = IsEmployeeInOffice(EGN);
 
