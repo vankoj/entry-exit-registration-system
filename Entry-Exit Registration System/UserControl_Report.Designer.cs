@@ -29,15 +29,10 @@ namespace Entry_Exit_Registration_System
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.f_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.l_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.position = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.work_hours = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBox_egn = new System.Windows.Forms.TextBox();
             this.personEGN = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -45,6 +40,12 @@ namespace Entry_Exit_Registration_System
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.period = new System.Windows.Forms.Label();
             this.check_button = new GroceryShop.CustomBtn.RoundButton();
+            this.f_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.l_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.position = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.work_hours = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.entry = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,14 +58,14 @@ namespace Entry_Exit_Registration_System
             this.dataGridView1.BackgroundColor = System.Drawing.Color.Black;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.SeaGreen;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.SeaGreen;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeight = 30;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -72,15 +73,16 @@ namespace Entry_Exit_Registration_System
             this.l_name,
             this.id,
             this.position,
-            this.work_hours});
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.SeaGreen;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle14;
+            this.work_hours,
+            this.entry});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.SeaGreen;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.Color.White;
@@ -88,64 +90,19 @@ namespace Entry_Exit_Registration_System
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.ControlDark;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.MediumSpringGreen;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlDark;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.MediumSpringGreen;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowHeadersWidth = 30;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(900, 300);
             this.dataGridView1.TabIndex = 5;
-            // 
-            // f_name
-            // 
-            this.f_name.Frozen = true;
-            this.f_name.HeaderText = "Име";
-            this.f_name.MinimumWidth = 125;
-            this.f_name.Name = "f_name";
-            this.f_name.ReadOnly = true;
-            this.f_name.Width = 125;
-            // 
-            // l_name
-            // 
-            this.l_name.Frozen = true;
-            this.l_name.HeaderText = "Фамилия";
-            this.l_name.MinimumWidth = 125;
-            this.l_name.Name = "l_name";
-            this.l_name.ReadOnly = true;
-            this.l_name.Width = 125;
-            // 
-            // id
-            // 
-            this.id.Frozen = true;
-            this.id.HeaderText = "ЕГН";
-            this.id.MinimumWidth = 100;
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Width = 125;
-            // 
-            // position
-            // 
-            this.position.Frozen = true;
-            this.position.HeaderText = "Позиция";
-            this.position.MinimumWidth = 120;
-            this.position.Name = "position";
-            this.position.ReadOnly = true;
-            this.position.Width = 120;
-            // 
-            // work_hours
-            // 
-            this.work_hours.Frozen = true;
-            this.work_hours.HeaderText = "Изработени часове";
-            this.work_hours.MinimumWidth = 170;
-            this.work_hours.Name = "work_hours";
-            this.work_hours.ReadOnly = true;
-            this.work_hours.Width = 170;
             // 
             // textBox_egn
             // 
@@ -229,6 +186,58 @@ namespace Entry_Exit_Registration_System
             this.check_button.UseVisualStyleBackColor = true;
             this.check_button.Click += new System.EventHandler(this.check_button_Click);
             // 
+            // f_name
+            // 
+            this.f_name.Frozen = true;
+            this.f_name.HeaderText = "Име";
+            this.f_name.MinimumWidth = 125;
+            this.f_name.Name = "f_name";
+            this.f_name.ReadOnly = true;
+            this.f_name.Width = 125;
+            // 
+            // l_name
+            // 
+            this.l_name.Frozen = true;
+            this.l_name.HeaderText = "Фамилия";
+            this.l_name.MinimumWidth = 125;
+            this.l_name.Name = "l_name";
+            this.l_name.ReadOnly = true;
+            this.l_name.Width = 125;
+            // 
+            // id
+            // 
+            this.id.Frozen = true;
+            this.id.HeaderText = "ЕГН";
+            this.id.MinimumWidth = 80;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Width = 80;
+            // 
+            // position
+            // 
+            this.position.Frozen = true;
+            this.position.HeaderText = "Позиция";
+            this.position.MinimumWidth = 100;
+            this.position.Name = "position";
+            this.position.ReadOnly = true;
+            // 
+            // work_hours
+            // 
+            this.work_hours.Frozen = true;
+            this.work_hours.HeaderText = "Изработени часове";
+            this.work_hours.MinimumWidth = 130;
+            this.work_hours.Name = "work_hours";
+            this.work_hours.ReadOnly = true;
+            this.work_hours.Width = 130;
+            // 
+            // entry
+            // 
+            this.entry.HeaderText = "Влиза/Излиза";
+            this.entry.MinimumWidth = 80;
+            this.entry.Name = "entry";
+            this.entry.ReadOnly = true;
+            this.entry.Width = 80;
+            // 
             // UserControl_Report
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -256,15 +265,16 @@ namespace Entry_Exit_Registration_System
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox textBox_egn;
         private System.Windows.Forms.Label personEGN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn f_name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn l_name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn position;
-        private System.Windows.Forms.DataGridViewTextBoxColumn work_hours;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label period;
         private GroceryShop.CustomBtn.RoundButton check_button;
+        private System.Windows.Forms.DataGridViewTextBoxColumn f_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn l_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn position;
+        private System.Windows.Forms.DataGridViewTextBoxColumn work_hours;
+        private System.Windows.Forms.DataGridViewTextBoxColumn entry;
     }
 }
