@@ -113,7 +113,7 @@ namespace Entry_Exit_Registration_System
             dataGridView1.Rows.Clear();
             List<CheckInEvent> items = new List<CheckInEvent>();
 
-            if (textBox_egn.Text.Length == 10)
+            if (textBox_egn.Text.Length == 10 || comboBox1.SelectedIndex == 3)
             {
                 switch (comboBox1.SelectedIndex)
                 {
