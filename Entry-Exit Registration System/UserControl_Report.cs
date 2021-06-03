@@ -118,16 +118,16 @@ namespace Entry_Exit_Registration_System
                 switch (comboBox1.SelectedIndex)
                 {
                     case 0:
-                        items = database.GetEmployeeCheckInsForDate(textBox_egn.Text, dateTimePicker1.Value);
+                        items = database.GetEmployeeCheckInsForDate(textBox_egn.Text, dateTimePicker1.Value.Date);
                         break;
                     case 1:
-                        items = database.GetEmployeeCheckInsForMonth(textBox_egn.Text, dateTimePicker1.Value);
+                        items = database.GetEmployeeCheckInsForMonth(textBox_egn.Text, dateTimePicker1.Value.Date);
                         break;
                     case 2:
-                        items = database.GetEmployeeCheckInsForPeriod(textBox_egn.Text, dateTimePicker1.Value, dateTimePicker2.Value);
+                        items = database.GetEmployeeCheckInsForPeriod(textBox_egn.Text, dateTimePicker1.Value.Date, dateTimePicker2.Value.Date);
                         break;
                     case 3:
-                        items = database.GetEmployeesForPeriod(dateTimePicker1.Value, dateTimePicker2.Value);
+                        items = database.GetEmployeesForPeriod(dateTimePicker1.Value.Date, dateTimePicker2.Value.Date);
                         break;
                 }
 
