@@ -190,28 +190,28 @@ namespace Entry_Exit_Registration_System
             // 
             this.f_name.Frozen = true;
             this.f_name.HeaderText = "Име";
-            this.f_name.MinimumWidth = 125;
+            this.f_name.MinimumWidth = 120;
             this.f_name.Name = "f_name";
             this.f_name.ReadOnly = true;
-            this.f_name.Width = 125;
+            this.f_name.Width = 120;
             // 
             // l_name
             // 
             this.l_name.Frozen = true;
             this.l_name.HeaderText = "Фамилия";
-            this.l_name.MinimumWidth = 125;
+            this.l_name.MinimumWidth = 120;
             this.l_name.Name = "l_name";
             this.l_name.ReadOnly = true;
-            this.l_name.Width = 125;
+            this.l_name.Width = 120;
             // 
             // id
             // 
             this.id.Frozen = true;
             this.id.HeaderText = "ЕГН";
-            this.id.MinimumWidth = 80;
+            this.id.MinimumWidth = 70;
             this.id.Name = "id";
             this.id.ReadOnly = true;
-            this.id.Width = 80;
+            this.id.Width = 70;
             // 
             // position
             // 
@@ -220,18 +220,20 @@ namespace Entry_Exit_Registration_System
             this.position.MinimumWidth = 100;
             this.position.Name = "position";
             this.position.ReadOnly = true;
+            this.position.Width = 125;
             // 
             // work_hours
             // 
             this.work_hours.Frozen = true;
-            this.work_hours.HeaderText = "Изработени часове";
-            this.work_hours.MinimumWidth = 130;
+            this.work_hours.HeaderText = "Дата и час";
+            this.work_hours.MinimumWidth = 110;
             this.work_hours.Name = "work_hours";
             this.work_hours.ReadOnly = true;
-            this.work_hours.Width = 130;
+            this.work_hours.Width = 110;
             // 
             // entry
             // 
+            this.entry.Frozen = true;
             this.entry.HeaderText = "Влиза/Излиза";
             this.entry.MinimumWidth = 80;
             this.entry.Name = "entry";
