@@ -75,7 +75,8 @@ namespace Entry_Exit_Registration_System
             int index = 1;
 
             List<CheckInEvent> employees = database.GetEmployees();
-            if (employees != null && employees.Count > 0) {
+            if (employees != null && employees.Count > 0)
+            {
                 foreach (CheckInEvent employee in employees)
                 {
                     dataGridView_employees.Rows.Add(employee.F_Name, employee.L_Name, employee.EGN, employee.Position_Name);
@@ -138,6 +139,7 @@ namespace Entry_Exit_Registration_System
 
         private void remove_position_button_Click(object sender, EventArgs e)
         {
+            bool fail = false;
             Int32 selectedCellCount = dataGridView_positions.GetCellCount(DataGridViewElementStates.Selected) / 2;
             if (selectedCellCount > 0)
             {
@@ -149,10 +151,8 @@ namespace Entry_Exit_Registration_System
                     {
                         foreach (DataGridViewRow row in dataGridView_positions.Rows)
                         {
-                            database.RemovePosition(row.Cells["name"].Value.ToString());
+                            if (!database.RemovePosition(row.Cells["name"].Value.ToString())) fail = true;
                         }
-                        position_removed.Visible = true;
-                        timer_removed_lable.Start();
                     }
                     else if (result == DialogResult.No)
                     {
@@ -163,8 +163,16 @@ namespace Entry_Exit_Registration_System
                 {
                     foreach (DataGridViewRow row in dataGridView_positions.SelectedRows)
                     {
-                        database.RemovePosition(row.Cells["name"].Value.ToString());
+                        if (!database.RemovePosition(row.Cells["name"].Value.ToString())) fail = true;
                     }
+                }
+
+                if (fail)
+                {
+                    MessageBox.Show("Една или повече позиции все още се използват и не може да се изтрият!", "Грешка!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
                     position_removed.Visible = true;
                     timer_removed_lable.Start();
                 }
