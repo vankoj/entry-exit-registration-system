@@ -395,13 +395,24 @@ namespace Entry_Exit_Registration_System
         public bool RemovePosition(string positionName)
         {
             bool successful = true;
+            string query = "SELECT * FROM Employee WHERE Position_Id = (SELECT Id FROM Position WHERE Position_Name LIKE @positionName)";
 
-            SqlCommand cmd = new SqlCommand("DELETE Position WHERE Position_Name LIKE @positionName", connection);
+            SqlCommand cmd = new SqlCommand(query, connection);
 
             try
             {
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@positionName", positionName);
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return false;
+                    }
+                }
+
+                cmd.CommandText = "DELETE Position WHERE Position_Name LIKE @positionName";
                 cmd.ExecuteNonQuery();
             }
             catch (Exception)
