@@ -370,13 +370,17 @@ namespace Entry_Exit_Registration_System
         public bool RemoveEmployee(string EGN)
         {
             bool successful = true;
+            string query = "DELETE CheckIn WHERE EGN LIKE @EGN";
 
-            SqlCommand cmd = new SqlCommand("DELETE Employee WHERE EGN LIKE @EGN", connection);
+            SqlCommand cmd = new SqlCommand(query, connection);
 
             try
             {
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.AddWithValue("@EGN", EGN);
+                cmd.ExecuteNonQuery();
+
+                cmd.CommandText = "DELETE Employee WHERE EGN LIKE @EGN";
                 cmd.ExecuteNonQuery();
             }
             catch (Exception)
